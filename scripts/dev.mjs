@@ -6,7 +6,7 @@ import { generateIndex } from './generate-index.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 4173;
 
 await generateIndex();
 
