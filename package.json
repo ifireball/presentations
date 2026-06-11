@@ -1,0 +1,14 @@
+{
+  "name": "presentations",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "index": "node scripts/generate-index.mjs",
+    "dev": "node scripts/dev.mjs",
+    "predev": "node scripts/generate-index.mjs"
+  },
+  "devDependencies": {
+    "chokidar": "^4.0.3",
+    "live-server": "^1.2.2"
+  }
+}
