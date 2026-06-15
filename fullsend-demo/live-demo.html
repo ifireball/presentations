@@ -198,19 +198,18 @@
 <summary>Cursor Prompt — paste this to create the issue</summary>
 <div class="prompt-box">
     
-    <pre>Create a GitHub issue in fullsend-ai/fullsend with gh cli. Use the --label "agent/review" --label "priority/low" flags. 
-      
-    Title: "/fs-review on a merged PR gives no feedback". 
-        
-    Body should be a bug report explaining: when you comment /fs-review on a PR that has already been merged or closed, nothing visible happens — no comment, no reaction emoji, no explanation. The review agent silently exits in post-review.sh (lines 33-37) with just a log message to Actions. The user has no way to know this was intentional. Expected behavior: post a brief comment on the PR explaining the review was skipped because the PR is already merged/closed. The pre-code.sh script already follows this pattern for /fs-code — it posts a visible comment when skipping. Steps to reproduce: merge any PR, then comment /fs-review on it.</pre>
+    <pre>Create an issue in this repo to document the bug of the main page saying "fullsand" rather than "fullsend"</pre>
     <button class="copy-btn" onclick="navigator.clipboard.writeText(this.closest('.prompt-box').querySelector('pre').textContent.trim())">Copy</button>
   </div>
 </details>
 
 
   <div class="link-row">
-    <a href="https://github.com/fullsend-ai/fullsend/issues/new">→ Create Issue (Live)</a>
-    <a href="https://github.com/fullsend-ai/.fullsend/actions">→ Watch Actions</a>
+    <a href="https://github.com/fullsend-playground/hello-pages/issues/3">View issue #3</a>
+    <a href="https://github.com/fullsend-playground/hello-pages/actions/runs/27546819070/job/81422310412">View Triage workflow</a>
+    <a href="https://github.com/fullsend-playground/hello-pages/actions/runs/27546980926/job/81422879561">View Code workflow</a>
+    <a href="https://github.com/fullsend-playground/hello-pages/pull/4">View PR #4</a>
+    <a href="https://github.com/fullsend-playground/hello-pages/actions/runs/27547165095/job/81423493902">View Review workflow</a>
   </div>
 </div>
 
