@@ -41,17 +41,19 @@
   .case-1::before { background: var(--green); }
   .case-2::before { background: var(--cyan); }
   .case-3::before { background: var(--orange); }
-  .case-4::before { background: var(--purple); }
-  .case-5::before { background: var(--red); }
-  .case-6::before { background: var(--accent); }
+  .case-4::before { background: #f778ba; }
+  .case-5::before { background: var(--purple); }
+  .case-6::before { background: var(--red); }
+  .case-7::before { background: var(--accent); }
   .case-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .case-num { font-weight: 800; font-size: 0.75rem; padding: 3px 10px; border-radius: 10px; }
   .cn-1 { background: #1a3d23; color: var(--green); }
   .cn-2 { background: #1a3535; color: var(--cyan); }
   .cn-3 { background: #3d2f1a; color: var(--orange); }
-  .cn-4 { background: #2a1a3d; color: var(--purple); }
-  .cn-5 { background: #3d1a1a; color: var(--red); }
-  .cn-6 { background: #1a2a3d; color: var(--accent); }
+  .cn-4 { background: #3d1a2e; color: #f778ba; }
+  .cn-5 { background: #2a1a3d; color: var(--purple); }
+  .cn-6 { background: #3d1a1a; color: var(--red); }
+  .cn-7 { background: #1a2a3d; color: var(--accent); }
   .case-title { font-weight: 700; font-size: 1.05rem; }
   .case-type { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; background: #1c2128; color: var(--muted); margin-left: auto; }
   .case-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
@@ -318,6 +320,40 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
 <div class="case case-4">
   <div class="case-header">
     <span class="case-num cn-4">CASE 4</span>
+    <span class="case-title">Fix Agent - Address Review Findings</span>
+    <span class="case-type">REVIEW → FIX → RE-REVIEW</span>
+  </div>
+
+  <div class="case-flow">
+    <span class="flow-step active">Code Agent</span>
+    <span class="flow-arrow-sm">→</span>
+    <span class="flow-step active">PR Opened</span>
+    <span class="flow-arrow-sm">→</span>
+    <span class="flow-step active">Review (auto)</span>
+    <span class="flow-arrow-sm">→</span>
+    <span class="flow-step manual">/fs-fix</span>
+    <span class="flow-arrow-sm">→</span>
+    <span class="flow-step active">Fix Agent</span>
+    <span class="flow-arrow-sm">→</span>
+    <span class="flow-step active">Review (auto)</span>
+    <span class="flow-arrow-sm">→</span>
+    <span class="flow-step active">Merged</span>
+  </div>
+
+  <p class="case-desc"><a href="https://github.com/fullsend-ai/fullsend/pull/2038">PR #2038</a> was opened by the code agent, reviewed with findings, fixed by the fix agent (posting as the code agent), re-reviewed, and merged — the full cycle in about 1.5 hours.</p>
+
+  <div class="link-row">
+    <a href="https://github.com/fullsend-ai/fullsend/pull/2038">PR #2038</a>
+    <a href="https://github.com/fullsend-ai/fullsend/pull/2038#issuecomment-4652037942">View review findings</a>
+    <a href="https://github.com/fullsend-ai/fullsend/pull/2038#issuecomment-4652435464">View fix agent comment</a>
+    <a href="https://github.com/fullsend-ai/fullsend/pull/2038#issuecomment-4652451106">View re-review</a>
+  </div>
+</div>
+
+<!-- CASE 5 -->
+<div class="case case-5">
+  <div class="case-header">
+    <span class="case-num cn-5">CASE 5</span>
     <span class="case-title">Retro Agent - Post-Merge Quality Audit</span>
     <span class="case-type">SELF-HEALING PIPELINE</span>
   </div>
@@ -343,10 +379,10 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
   </div>
 </div>
 
-<!-- CASE 5 -->
-<div class="case case-5">
+<!-- CASE 6 -->
+<div class="case case-6">
   <div class="case-header">
-    <span class="case-num cn-5">CASE 5</span>
+    <span class="case-num cn-6">CASE 6</span>
     <span class="case-title">Human PR - Agents Review Human Code Too</span>
     <span class="case-type">YOU STAY IN CONTROL</span>
   </div>
@@ -374,10 +410,10 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
   </div>
 </div>
 
-<!-- CASE 6 -->
-<div class="case case-6">
+<!-- CASE 7 -->
+<div class="case case-7">
   <div class="case-header">
-    <span class="case-num cn-6">CASE 6</span>
+    <span class="case-num cn-7">CASE 7</span>
     <span class="case-title">Adding custom agents</span>
   </div>
 
