@@ -67,6 +67,90 @@
 .adlc-flow-slide .dev-flow { margin-top: 0; flex: 1; display: flex; align-items: center; transform: scale(1.08); transform-origin: 50% 0; }
 .adlc-flow-slide .dev-flow svg { display: block; width: 100%; height: auto; max-height: none; margin: 0 auto; }
 
+.agenda-link { cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease; }
+.agenda-link:hover { background: #161b22cc !important; border-color: #58a6ff44 !important; }
+.agenda-link > a { display: flex; align-items: center; gap: 0.6em; width: 100%; color: inherit; border-bottom: none; text-decoration: none; }
+.agenda-link > a:hover { color: inherit; border-bottom: none; }
+
+.reveal .deck-home-controls {
+  position: absolute;
+  top: auto;
+  bottom: var(--r-controls-spacing);
+  left: var(--r-controls-spacing);
+  right: auto;
+  z-index: 11;
+  color: var(--r-link-color);
+  pointer-events: none;
+  font-size: 10px;
+}
+.reveal .deck-home-controls .navigate-home {
+  position: absolute;
+  left: 0;
+  bottom: 1.4em;
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  color: currentColor;
+  text-decoration: none;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: inherit;
+  transform: scale(0.9999);
+  visibility: hidden;
+  opacity: 0;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.reveal .deck-home-controls .navigate-home.enabled {
+  visibility: visible;
+  opacity: 0.9;
+  transform: none;
+}
+.reveal .deck-home-controls .navigate-home.enabled:hover { opacity: 1; }
+.reveal .deck-home-controls .controls-arrow {
+  position: relative;
+  width: 3.6em;
+  height: 3.6em;
+  transform: rotate(90deg);
+}
+.reveal .deck-home-controls .controls-arrow:before,
+.reveal .deck-home-controls .controls-arrow:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.6em;
+  height: 0.5em;
+  border-radius: 0.25em;
+  background-color: currentColor;
+  transition: all 0.15s ease, background-color 0.8s ease;
+  transform-origin: 0.2em 50%;
+  will-change: transform;
+}
+.reveal .deck-home-controls .controls-arrow:before {
+  transform: translateX(0.5em) translateY(1.55em) rotate(45deg);
+}
+.reveal .deck-home-controls .controls-arrow:after {
+  transform: translateX(0.5em) translateY(1.55em) rotate(-45deg);
+}
+.reveal .deck-home-controls .controls-home-body {
+  position: absolute;
+  bottom: 0.15em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5em;
+  height: 1.25em;
+  border-radius: 0.25em;
+  background-color: transparent;
+  border: 0.5em solid currentColor;
+  box-sizing: border-box;
+  transition: border-color 0.8s ease;
+  pointer-events: none;
+}
+
 </style>
 </head>
 <body>
@@ -75,35 +159,45 @@
 <div class="slides">
 
 <!-- SLIDE 1: AGENDA -->
-<section>
+<section id="agenda">
 <h1 style="margin-bottom: 0.6em; text-align: center;">Fullsend — <span style="font-size: 0.7em; font-weight: 400; color: #8b949e;">Agentic SDLC</span></h1>
 <div style="display: grid; grid-template-columns: 2fr 3fr; gap: 1em; align-items: start;">
 <div>
 <h2>What We'll Cover</h2>
 <ul style="list-style: none; padding: 0; margin: 0.3em 0; font-size: 0.72em;">
-<li style="padding: 0.5em 0.7em; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d; display: flex; align-items: center; gap: 0.6em;">
+<li class="agenda-link" style="padding: 0.5em 0.7em; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d; display: flex; align-items: center; gap: 0.6em;" onclick="if(!event.target.closest('a[href^=\'https\']')){location.hash='#/intro'}">
 <span style="color: #58a6ff; font-weight: 700; font-size: 1.2em; width: 1.5em;">1.</span>
-<span>Intro + disclaimers + <a href="https://redhat-internal.slack.com/archives/C0AL1K8E7MX">#forum-fullsend-ai</a></span>
+<span>Intro + disclaimers + <a href="https://redhat-internal.slack.com/archives/C0AL1K8E7MX" onclick="event.stopPropagation()">#forum-fullsend-ai</a></span>
 </li>
-<li style="padding: 0.5em 0.7em; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d; display: flex; align-items: center; gap: 0.6em;">
+<li class="agenda-link" style="padding: 0; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d;">
+<a href="#/install-steps" style="padding: 0.5em 0.7em;">
 <span style="color: #58a6ff; font-weight: 700; font-size: 1.2em; width: 1.5em;">2.</span>
 <span><strong>Install steps</strong> — what it takes to set up fullsend</span>
+</a>
 </li>
-<li style="padding: 0.5em 0.7em; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d; display: flex; align-items: center; gap: 0.6em;">
+<li class="agenda-link" style="padding: 0; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d;">
+<a href="#/live-demo" style="padding: 0.5em 0.7em;">
 <span style="color: #58a6ff; font-weight: 700; font-size: 1.2em; width: 1.5em;">3.</span>
 <span><strong>Playground</strong> — drop invite link</span>
+</a>
 </li>
-<li style="padding: 0.5em 0.7em; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d; display: flex; align-items: center; gap: 0.6em;">
+<li class="agenda-link" style="padding: 0; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d;">
+<a href="#/live-demo" style="padding: 0.5em 0.7em;">
 <span style="color: #58a6ff; font-weight: 700; font-size: 1.2em; width: 1.5em;">4.</span>
 <span><strong>Live development</strong> — trigger agents on real issues</span>
+</a>
 </li>
-<li style="padding: 0.5em 0.7em; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d; display: flex; align-items: center; gap: 0.6em;">
+<li class="agenda-link" style="padding: 0; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d;">
+<a href="#/live-demo" style="padding: 0.5em 0.7em;">
 <span style="color: #58a6ff; font-weight: 700; font-size: 1.2em; width: 1.5em;">5.</span>
 <span><strong>Walk through results</strong> — PRs, Actions logs, review comments</span>
+</a>
 </li>
-<li style="padding: 0.5em 0.7em; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d; display: flex; align-items: center; gap: 0.6em;">
+<li class="agenda-link" style="padding: 0; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d;">
+<a href="#/adlc" style="padding: 0.5em 0.7em;">
 <span style="color: #58a6ff; font-weight: 700; font-size: 1.2em; width: 1.5em;">6.</span>
 <span><strong>AGILE in the age of ADLC</strong> — Fullsend team dev process</span>
+</a>
 </li>
 <li style="padding: 0.5em 0.7em; margin-bottom: 0.3em; border-radius: 6px; background: #161b2288; border: 1px solid #21262d; display: flex; align-items: center; gap: 0.6em;">
 <span style="color: #58a6ff; font-weight: 700; font-size: 1.2em; width: 1.5em;">7.</span>
@@ -119,7 +213,7 @@
 </section>
 
 <!-- SLIDE 2: FRAMING -->
-<section class="center">
+<section id="intro" class="center">
 <h2>Before We Develop with Fullsend...</h2>
 <p style="font-size: 1em; color: #8b949e; max-width: 85%; margin: 1em auto;">Here's a bit about what goes into getting fullsend installed.</p>
 <p style="font-size: 0.8em; color: #8b949e; max-width: 80%; margin: 1em auto;">The full picture, so you know what's behind the curtain.</p>
@@ -166,7 +260,7 @@
 </section>
 
 <!-- SLIDE 3: ALL STEPS WITH DETAILS -->
-<section>
+<section id="install-steps">
 <h2>What a New Admin Has to Do</h2>
 <ul class="step-list">
 <li>
@@ -312,14 +406,14 @@ Only needs repo admin access
 </section>
 
 <!-- SLIDE 6: LIVE DEMO -->
-<section class="center">
+<section id="live-demo" class="center">
 <h2 style="margin-bottom: 0.8em;">Continue</h2>
 <p style="font-size: 0.85em;"><a href="live-demo.html">Live Demo Walkthrough →</a></p>
 <p style="font-size: 0.6em; color: #6e7681; margin-top: 1.5em;"><a href="./" style="color: #6e7681; border-bottom: none;">All Demo Materials</a></p>
 </section>
 
 <!-- SLIDE 7: AGILE IN THE AGE OF ADLC -->
-<section class="adlc-flow-slide">
+<section id="adlc" class="adlc-flow-slide">
 <h2>AGILE in the age of ADLC</h2>
 <div class="dev-flow">
 <svg viewBox="-8 -28 952 440" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Fullsend team development process">
@@ -469,6 +563,14 @@ Only needs repo admin access
 </section>
 
 </div>
+
+<aside class="deck-home-controls">
+  <a href="#/agenda" class="navigate-home enabled" aria-label="Back to agenda">
+    <div class="controls-arrow" aria-hidden="true"></div>
+    <span class="controls-home-body" aria-hidden="true"></span>
+  </a>
+</aside>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
@@ -481,6 +583,15 @@ Reveal.initialize({
   height: 700,
   margin: 0.1,
 });
+
+const home = document.querySelector('.deck-home-controls .navigate-home');
+function updateHome() {
+  const onAgenda = Reveal.getCurrentSlide()?.id === 'agenda';
+  home.classList.toggle('enabled', !onAgenda);
+  home.setAttribute('aria-disabled', onAgenda ? 'true' : 'false');
+}
+Reveal.on('ready', updateHome);
+Reveal.on('slidechanged', updateHome);
 </script>
 </body>
 </html>
