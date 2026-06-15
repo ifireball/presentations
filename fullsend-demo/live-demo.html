@@ -271,21 +271,34 @@ using current CSS variables, with no new dependencies.</pre>
   </div>
 
   <details class="prompt-collapse">
+<summary>Cursor Prompt — paste this to create the issue</summary>
+<div class="prompt-box">
+    
+    <pre>File a GitHub issue on fullsend-playground/hello-pages.
+
+Title: Improve the homepage
+
+Body (keep it short and vague — do not add scope, mockups,
+acceptance criteria, or design details):
+
+  The landing page feels too bare. Can we make it better?
+
+Do not label it, assign it, or expand the description. Open the
+issue only; no PR or code changes.</pre>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(this.closest('.prompt-box').querySelector('pre').textContent.trim())">Copy</button>
+  </div>
+</details>
+
+  <details class="prompt-collapse">
 <summary>Step 1 — Post this comment to provide the requested info</summary>
 <div class="prompt-box">
     
-    <pre>
+    <pre>mostly thinking visual — some globe graphics in the background behind the
+hero. subtle wireframe globes or a soft earth-ish shape, nothing loud.
+doesn't need to be interactive, just something behind the "hello world"
+text so it's not totally flat.
 
-- **Schema changes:** new `role` and `slug` fields at harness top-level, plus a `forge:` section with per-platform sub-blocks (github, gitlab, forgejo)
-- **Inheritance rules:** scalars override, `skills` concatenate, `runner_env` merges, `validation_loop` replaces entirely
-- **Go struct additions:** new `ForgeConfig` struct, updated `Harness` struct with `ForgeConfigs map[string]ForgeConfig`
-- **Migration path:** four phases — (1) backward-compatible additions, (2) adopt new fields, (3) deprecate legacy, (4) remove
-
-Implementation should start with phase 1 only (additive, no breaking changes):
-1. Add `role` and `slug` to the harness YAML parser
-2. Add `forge:` section parsing with inheritance resolution
-3. Update `LoadHarness()` to populate new fields alongside legacy fields
-4. Unit tests covering inheritance edge cases (empty override vs nil, concatenation order)</pre>
+slow spin or drift is fine if it's easy but keep it low-key.</pre>
     <button class="copy-btn" onclick="navigator.clipboard.writeText(this.closest('.prompt-box').querySelector('pre').textContent.trim())">Copy</button>
   </div>
 </details>
@@ -301,7 +314,7 @@ Implementation should start with phase 1 only (additive, no breaking changes):
 
 
   <div class="link-row">
-    <a href="https://github.com/fullsend-ai/fullsend/issues/1605">→ Issue #1605 — Forge-portable harness schema</a>
+    <a href="https://github.com/fullsend-playground/hello-pages/issues/8">View issue #8</a>
   </div>
 </div>
 
