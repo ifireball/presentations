@@ -66,4 +66,5 @@ render_icon people '#c9d1d9' people-16.svg
 render_icon issue-opened '#58a6ff' issue-opened-16.svg
 render_icon git-pull-request '#c9d1d9' git-pull-request-16.svg
 render_icon git-merge '#a371f7' git-merge-16.svg
+render_icon terminal '#bc8cff' terminal-16.svg
 render_traffic

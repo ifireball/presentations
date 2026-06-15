@@ -56,8 +56,9 @@
   .case-type { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; background: #1c2128; color: var(--muted); margin-left: auto; }
   .demo-accordion-summary .case-type { margin-left: 0; }
   .case-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
-  .case-flow { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
-  .flow-step { font-size: 0.8rem; padding: 4px 10px; border-radius: 6px; background: #1c2128; border: 1px solid var(--border); }
+  .case-flow { display: flex; align-items: flex-start; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
+  .flow-step { display: inline-flex; flex-direction: column; align-items: center; text-align: center; gap: 0.35rem; font-size: 0.8rem; padding: 8px 10px; border-radius: 6px; background: #1c2128; border: 1px solid var(--border); max-width: 7.5rem; line-height: 1.3; }
+  .flow-icon { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border); object-fit: cover; flex-shrink: 0; display: block; }
   .flow-step.active { border-color: var(--green); color: var(--green); }
   .flow-step.gated { border-color: var(--orange); color: var(--orange); }
   .flow-step.manual { border-color: var(--purple); color: var(--purple); }
@@ -128,17 +129,17 @@
   <div class="demo-accordion-panel">
     <div class="demo-accordion-body">
 <div class="case-flow">
-    <span class="flow-step active">Issue Created</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/issue-opened.png" alt="">Issue Created</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Triage (auto)</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/triage.png" alt="">Triage (auto)</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">ready-to-code</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/traffic-green.png" alt="">ready-to-code</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Code Agent (auto)</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/coder.png" alt="">Code Agent (auto)</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">PR Opened</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/git-pull-request.png" alt="">PR Opened</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Review (auto)</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/review.png" alt="">Review (auto)</span>
   </div>
 
   <details class="prompt-collapse">
@@ -171,13 +172,13 @@
   <div class="demo-accordion-panel">
     <div class="demo-accordion-body">
 <div class="case-flow">
-    <span class="flow-step active">Issue Created</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/issue-opened.png" alt="">Issue Created</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Triage (auto)</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/triage.png" alt="">Triage (auto)</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step gated">type/feature + triaged</span>
+    <span class="flow-step gated"><img class="flow-icon" src="assets/workflow/issue-opened.png" alt="">type/feature + triaged</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step gated">⛔ Code Agent NOT triggered</span>
+    <span class="flow-step gated"><img class="flow-icon" src="assets/agents/coder.png" alt="">⛔ Code Agent NOT triggered</span>
   </div>
 
   <details class="prompt-collapse">
@@ -212,13 +213,13 @@ using current CSS variables, with no new dependencies.</pre>
   <div class="demo-accordion-panel">
     <div class="demo-accordion-body">
 <div class="case-flow">
-    <span class="flow-step active">Comment answers needs-info</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/issue-opened.png" alt="">Comment answers needs-info</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">/fs-triage</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/terminal.png" alt="">/fs-triage</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Agent checks repo</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/triage.png" alt="">Agent checks repo</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step gated">needs-info: "ADR doesn't exist"</span>
+    <span class="flow-step gated"><img class="flow-icon" src="assets/workflow/issue-opened.png" alt="">needs-info: "ADR doesn't exist"</span>
   </div>
 
   <details class="prompt-collapse">
@@ -280,19 +281,19 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
   <div class="demo-accordion-panel">
     <div class="demo-accordion-body">
 <div class="case-flow">
-    <span class="flow-step active">Code Agent</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/coder.png" alt="">Code Agent</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">PR Opened</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/git-pull-request.png" alt="">PR Opened</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Review (auto)</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/review.png" alt="">Review (auto)</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step manual">/fs-fix</span>
+    <span class="flow-step manual"><img class="flow-icon" src="assets/workflow/terminal.png" alt="">/fs-fix</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Fix Agent</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/coder.png" alt="">Fix Agent</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Review (auto)</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/review.png" alt="">Review (auto)</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Merged</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/git-merge.png" alt="">Merged</span>
   </div>
 
   <p class="case-desc"><a href="https://github.com/fullsend-ai/fullsend/pull/2038">PR #2038</a> was opened by the code agent, reviewed with findings, fixed by the fix agent (posting as the code agent), re-reviewed, and merged — the full cycle in about 1.5 hours.</p>
@@ -316,15 +317,15 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
   <div class="demo-accordion-panel">
     <div class="demo-accordion-body">
 <div class="case-flow">
-    <span class="flow-step" style="border-color: var(--red); color: var(--red);">Retro: found gap</span>
+    <span class="flow-step" style="border-color: var(--red); color: var(--red);"><img class="flow-icon" src="assets/agents/retro.png" alt="">Retro: found gap</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step" style="border-color: var(--red); color: var(--red);">Auto-filed issue</span>
+    <span class="flow-step" style="border-color: var(--red); color: var(--red);"><img class="flow-icon" src="assets/workflow/issue-opened.png" alt="">Auto-filed issue</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step manual">/fs-code</span>
+    <span class="flow-step manual"><img class="flow-icon" src="assets/workflow/terminal.png" alt="">/fs-code</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Code Agent</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/coder.png" alt="">Code Agent</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">PR → Review</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/git-pull-request.png" alt="">PR → Review</span>
   </div>
 
   <p class="case-desc">PR #1083 was merged. The retro agent audited it post-merge and discovered a force-push left the PR with <strong>zero agent review</strong>. It filed this issue automatically. Now we trigger the code agent to fix the gap it found.</p>
@@ -347,17 +348,17 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
   <div class="demo-accordion-panel">
     <div class="demo-accordion-body">
 <div class="case-flow">
-    <span class="flow-step manual">Human writes code</span>
+    <span class="flow-step manual"><img class="flow-icon" src="assets/workflow/people.png" alt="">Human writes code</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step manual">Push PR</span>
+    <span class="flow-step manual"><img class="flow-icon" src="assets/workflow/git-pull-request.png" alt="">Push PR</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Review (auto)</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/review.png" alt="">Review (auto)</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step gated">⛔ Fix does NOT auto-fire</span>
+    <span class="flow-step gated"><img class="flow-icon" src="assets/agents/coder.png" alt="">⛔ Fix does NOT auto-fire</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step manual">/fs-fix (opt-in)</span>
+    <span class="flow-step manual"><img class="flow-icon" src="assets/workflow/terminal.png" alt="">/fs-fix (opt-in)</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Fix pushes commit</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/coder.png" alt="">Fix pushes commit</span>
   </div>
 
   <div class="link-row">
@@ -379,9 +380,9 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
   <div class="demo-accordion-panel">
     <div class="demo-accordion-body">
 <div class="case-flow">
-    <span class="flow-step active">Issue Created</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/workflow/issue-opened.png" alt="">Issue Created</span>
     <span class="flow-arrow-sm">→</span>
-    <span class="flow-step active">Prioritize Agent</span>
+    <span class="flow-step active"><img class="flow-icon" src="assets/agents/prioritize.png" alt="">Prioritize Agent</span>
   </div>
 
   <p class="case-desc">The prioritize agent is used to assign RICE scores to issues in the Fullsend repo</p>
