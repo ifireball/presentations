@@ -35,12 +35,6 @@
   .infra-bar .item { text-align: center; font-size: 0.78rem; color: var(--muted); }
   .infra-bar .item strong { color: var(--text); display: block; font-size: 0.82rem; }
 
-  /* Board callout */
-  .board { display: flex; align-items: center; gap: 1.5rem; background: linear-gradient(135deg, #111d2e 0%, var(--card) 100%); border: 1px solid var(--accent); border-radius: 12px; padding: 1.5rem 2rem; margin: 2rem 0; }
-  .board .icon { font-size: 2.5rem; flex-shrink: 0; }
-  .board h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .board p { font-size: 0.85rem; color: var(--muted); }
-
   /* Cases */
   .case { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem 2rem; margin: 1.5rem 0; position: relative; overflow: hidden; }
   .case::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; border-radius: 2px 0 0 2px; }
@@ -49,6 +43,7 @@
   .case-3::before { background: var(--orange); }
   .case-4::before { background: var(--purple); }
   .case-5::before { background: var(--red); }
+  .case-6::before { background: var(--accent); }
   .case-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .case-num { font-weight: 800; font-size: 0.75rem; padding: 3px 10px; border-radius: 10px; }
   .cn-1 { background: #1a3d23; color: var(--green); }
@@ -56,6 +51,7 @@
   .cn-3 { background: #3d2f1a; color: var(--orange); }
   .cn-4 { background: #2a1a3d; color: var(--purple); }
   .cn-5 { background: #3d1a1a; color: var(--red); }
+  .cn-6 { background: #1a2a3d; color: var(--accent); }
   .case-title { font-weight: 700; font-size: 1.05rem; }
   .case-type { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; background: #1c2128; color: var(--muted); margin-left: auto; }
   .case-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
@@ -325,7 +321,6 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
     <span class="case-title">Retro Agent - Post-Merge Quality Audit</span>
     <span class="case-type">SELF-HEALING PIPELINE</span>
   </div>
-  <p class="case-desc">PR #1083 was merged. The retro agent audited it post-merge and discovered a force-push left the PR with <strong>zero agent review</strong>. It filed this issue automatically. Now we trigger the code agent to fix the gap it found.</p>
 
   <div class="case-flow">
     <span class="flow-step" style="border-color: var(--red); color: var(--red);">Retro: found gap</span>
@@ -339,6 +334,7 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
     <span class="flow-step active">PR → Review</span>
   </div>
 
+  <p class="case-desc">PR #1083 was merged. The retro agent audited it post-merge and discovered a force-push left the PR with <strong>zero agent review</strong>. It filed this issue automatically. Now we trigger the code agent to fix the gap it found.</p>
 
   <div class="link-row">
     <a href="https://github.com/fullsend-ai/fullsend/issues/1541">→ Issue #1541 — Re-trigger review after stale-head</a>
@@ -378,12 +374,23 @@ slow spin or drift is fine if it's easy but keep it low-key.</pre>
   </div>
 </div>
 
-<div class="board" style="margin-top: 2.5rem;">
-  <div class="icon">📊</div>
-  <div>
-    <h3>Workstream Board — Auto-Prioritized by Agents</h3>
-    <p>Every issue gets a RICE score. The board shows what the system thinks matters most.</p>
-    <a href="https://github.com/orgs/fullsend-ai/projects/1/views/7">→ Open fullsend-ai Workstream Board</a>
+<!-- CASE 6 -->
+<div class="case case-6">
+  <div class="case-header">
+    <span class="case-num cn-6">CASE 6</span>
+    <span class="case-title">Adding custom agents</span>
+  </div>
+
+  <div class="case-flow">
+    <span class="flow-step active">Issue Created</span>
+    <span class="flow-arrow-sm">→</span>
+    <span class="flow-step active">Prioritize Agent</span>
+  </div>
+
+  <p class="case-desc">The prioritize agent is used to assign RICE scores to issues in the Fullsend repo</p>
+
+  <div class="link-row">
+    <a href="https://github.com/orgs/fullsend-ai/projects/1/views/7">Open fullsend-ai Workstream Board</a>
   </div>
 </div>
 
