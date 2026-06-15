@@ -61,7 +61,7 @@
 .dev-flow .flow-edge-loop { fill: none; stroke: #58a6ff; stroke-width: 1.8; stroke-dasharray: 6 4; }
 .adlc-flow-slide h2 { font-size: 1.45em; margin-bottom: 0.2em; }
 .adlc-flow-slide .dev-flow { margin-top: 0; }
-.adlc-flow-slide .dev-flow svg { display: block; width: 100%; height: auto; max-height: 460px; margin: 0 auto; }
+.adlc-flow-slide .dev-flow svg { display: block; width: 100%; height: auto; max-height: 480px; margin: 0 auto; }
 
 </style>
 </head>
@@ -318,7 +318,7 @@ Only needs repo admin access
 <section class="adlc-flow-slide">
 <h2>AGILE in the age of ADLC</h2>
 <div class="dev-flow">
-<svg viewBox="0 0 960 440" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Fullsend team development process">
+<svg viewBox="0 -25 960 490" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Fullsend team development process">
   <defs>
     <marker id="arrow-forward" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
       <path d="M0,0 L8,4 L0,8 Z" fill="#484f58"/>
@@ -340,10 +340,10 @@ Only needs repo admin access
   <path class="flow-edge" marker-end="url(#arrow-forward)" d="M 496 74 L 524 74"/>
   <path class="flow-edge" marker-end="url(#arrow-forward)" d="M 672 74 L 700 74"/>
   <path class="flow-edge" marker-end="url(#arrow-forward)" d="M 752 74 L 780 74"/>
-  <path class="flow-edge" marker-end="url(#arrow-forward)" d="M 726 160 L 726 184"/>
-  <path class="flow-edge" marker-end="url(#arrow-forward)" d="M 726 280 Q 520 292 400 304"/>
-  <path class="flow-edge-loop" marker-end="url(#arrow-loop)" d="M 780 66 C 710 66 710 66 672 74"/>
-  <path class="flow-edge-loop" marker-end="url(#arrow-loop)" d="M 372 400 C 24 400 24 74 120 74"/>
+  <path class="flow-edge" marker-end="url(#arrow-forward)" d="M 726 136 L 726 184"/>
+  <path class="flow-edge" marker-end="url(#arrow-forward)" d="M 726 280 L 726 304"/>
+  <path class="flow-edge-loop" marker-end="url(#arrow-loop)" d="M 854 48 A 128 64 0 0 0 598 48"/>
+  <path class="flow-edge-loop" marker-end="url(#arrow-loop)" d="M 698 352 C 400 352 206 200 206 144"/>
 
   <!-- Weekly meeting -->
   <g>
@@ -452,12 +452,12 @@ Only needs repo admin access
 
   <!-- Retro agent -->
   <g>
-    <rect class="flow-box" x="372" y="304" width="56" height="96" rx="6"/>
-    <circle cx="400" cy="330" r="16" fill="none" stroke="#484f58" stroke-width="1"/>
-    <image href="assets/agents/retro.png" x="384" y="314" width="32" height="32" clip-path="url(#agent-clip)"/>
+    <rect class="flow-box" x="698" y="304" width="56" height="96" rx="6"/>
+    <circle cx="726" cy="330" r="16" fill="none" stroke="#484f58" stroke-width="1"/>
+    <image href="assets/agents/retro.png" x="710" y="314" width="32" height="32" clip-path="url(#agent-clip)"/>
     <text class="flow-label" text-anchor="middle">
-      <tspan x="400" y="360">Retro</tspan>
-      <tspan x="400" dy="12">agent</tspan>
+      <tspan x="726" y="360">Retro</tspan>
+      <tspan x="726" dy="12">agent</tspan>
     </text>
   </g>
 </svg>
