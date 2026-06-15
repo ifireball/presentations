@@ -9,6 +9,7 @@ const SKIP_DIRS = new Set([
   '.git',
   'node_modules',
   'scripts',
+  '_site',
 ]);
 
 function titleFromDir(name) {
@@ -39,7 +40,7 @@ async function countHtmlFiles(dirPath) {
   return entries.filter((e) => e.isFile() && e.name.endsWith('.html')).length;
 }
 
-export async function generateIndex() {
+export async function discoverPresentations() {
   const entries = await readdir(root, { withFileTypes: true });
   const presentations = [];
 
@@ -58,11 +59,16 @@ export async function generateIndex() {
       slug: entry.name,
       title: await presentationTitle(dirPath, entry.name),
       htmlCount,
-      href: `/${entry.name}/`,
+      href: `${entry.name}/`,
     });
   }
 
   presentations.sort((a, b) => a.slug.localeCompare(b.slug));
+  return presentations;
+}
+
+export async function generateIndex() {
+  const presentations = await discoverPresentations();
 
   const cards = presentations.length
     ? presentations.map((p) => `    <a class="card" href="${p.href}">

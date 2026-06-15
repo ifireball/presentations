@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "index": "node scripts/generate-index.mjs",
+    "pages": "node scripts/prepare-pages.mjs",
     "dev": "node scripts/dev.mjs",
     "predev": "node scripts/generate-index.mjs"
   },
