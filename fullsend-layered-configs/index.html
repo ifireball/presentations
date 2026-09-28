@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fullsend Layered Configuration</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+:root {
+  --bg: #0d1117;
+  --surface: #131920;
+  --surface-2: #161b22;
+  --border: #26313d;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --dim: #6e7681;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --orange: #ffa657;
+  --amber: #e3b341;
+  --green: #3fb950;
+}
+
+* { box-sizing: border-box; }
+
+.reveal {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.reveal .slides section {
+  text-align: left;
+  padding: 28px 42px 24px;
+  height: 100%;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal p { margin: 0; }
+
+.reveal h2 {
+  color: var(--blue);
+  font-size: 1.42em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 0.66em;
+  margin-top: 0.38em;
+}
+
+.config-canvas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 34px;
+  align-items: center;
+  height: 530px;
+  margin-top: 12px;
+}
+
+.stack-area {
+  position: relative;
+  height: 475px;
+  padding: 22px 44px 0 102px;
+}
+
+.stack-area::before {
+  content: "";
+  position: absolute;
+  left: 63px;
+  top: 65px;
+  bottom: 40px;
+  width: 2px;
+  background: linear-gradient(var(--blue), #303944 78%);
+}
+
+.precedence-label {
+  position: absolute;
+  left: 0;
+  top: 205px;
+  width: 126px;
+  color: var(--dim);
+  font-size: 0.47em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.effective {
+  position: relative;
+  width: 100%;
+  min-height: 54px;
+  margin-bottom: 14px;
+  padding: 12px 18px 10px;
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  background: #16301f;
+  color: var(--green);
+  text-align: center;
+  font-size: 0.72em;
+  font-weight: 700;
+}
+
+.effective::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -16px;
+  width: 2px;
+  height: 15px;
+  background: var(--green);
+}
+
+.layer {
+  position: relative;
+  width: 100%;
+  min-height: 68px;
+  margin-bottom: 7px;
+  padding: 10px 18px 9px;
+  border: 1px solid var(--border);
+  border-left-width: 5px;
+  border-radius: 7px;
+  background: var(--surface-2);
+}
+
+.layer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 2px;
+  height: 9px;
+  background: #3a4652;
+}
+
+.layer:last-child::after { display: none; }
+
+.layer .file {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.69em;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.layer .description {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.56em;
+  line-height: 1.2;
+}
+
+.layer.overlay { border-left-color: var(--orange); }
+.layer.overlay .file { color: var(--orange); }
+.layer.cli { border-left-color: var(--purple); }
+.layer.cli .file { color: var(--purple); }
+.layer.base { border-left-color: var(--blue); }
+.layer.base .file { color: var(--blue); }
+.layer.compat {
+  border-color: #6b5524;
+  border-left-color: var(--amber);
+  border-style: dashed;
+}
+.layer.compat .file { color: var(--amber); }
+.layer.defaults { border-left-color: #6e7681; }
+.layer.defaults .file { color: #c9d1d9; }
+
+.side-path {
+  position: relative;
+  align-self: center;
+  padding-left: 20px;
+}
+
+.side-path::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 112px;
+  width: 18px;
+  height: 2px;
+  background: var(--blue);
+}
+
+.side-path::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 112px;
+  width: 2px;
+  height: 104px;
+  background: linear-gradient(var(--blue), var(--green));
+}
+
+.control-source,
+.control-action,
+.control-note {
+  position: relative;
+  border-radius: 7px;
+  padding: 14px 16px;
+}
+
+.control-source {
+  border: 1px solid #355f8d;
+  background: #102238;
+}
+
+.control-source .eyebrow,
+.control-action .eyebrow {
+  color: var(--muted);
+  font-size: 0.45em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.control-source .title {
+  margin-top: 5px;
+  color: var(--blue);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.66em;
+  font-weight: 700;
+}
+
+.control-source .line {
+  margin-top: 8px;
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.48em;
+  line-height: 1.45;
+}
+
+.control-source .line span { color: var(--muted); }
+
+.control-action {
+  margin-top: 22px;
+  border: 1px solid #346a43;
+  background: #12291a;
+}
+
+.control-action::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -23px;
+  width: 2px;
+  height: 22px;
+  background: linear-gradient(var(--blue), var(--green));
+}
+
+.control-action .title {
+  margin-top: 5px;
+  color: var(--green);
+  font-size: 0.62em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.control-action .detail {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.49em;
+  line-height: 1.25;
+}
+
+.control-note {
+  margin-top: 22px;
+  padding: 10px 13px;
+  border-left: 3px solid var(--blue);
+  border-radius: 0;
+  background: #161b22;
+  color: var(--muted);
+  font-size: 0.48em;
+  line-height: 1.25;
+}
+
+.control-note strong { color: var(--text); }
+
+.source {
+  position: absolute;
+  bottom: 12px;
+  left: 42px;
+  color: #56616d;
+  font-size: 0.39em;
+}
+
+.footnote {
+  position: absolute;
+  right: 42px;
+  bottom: 12px;
+  color: #718096;
+  font-size: 0.39em;
+  text-align: right;
+}
+
+.footnote code {
+  color: var(--blue);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.precedence-compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 142px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  height: 510px;
+  margin-top: 18px;
+}
+
+.model-col {
+  height: 458px;
+  padding: 16px 18px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #111820;
+}
+
+.model-col.actual {
+  border-color: #70323a;
+  background: #1a1418;
+}
+
+.model-label {
+  color: var(--muted);
+  font-size: 0.49em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.actual .model-label { color: #f85149; }
+
+.model-stack { margin-top: 14px; }
+
+.mini-layer {
+  position: relative;
+  min-height: 62px;
+  margin-bottom: 7px;
+  padding: 10px 13px 8px;
+  border: 1px solid var(--border);
+  border-left: 4px solid #6e7681;
+  border-radius: 5px;
+  background: var(--surface-2);
+}
+
+.mini-layer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 2px;
+  height: 7px;
+  background: #3a4652;
+}
+
+.mini-layer:last-child::after { display: none; }
+
+.mini-layer .name {
+  color: #c9d1d9;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.58em;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.mini-layer .meaning {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.46em;
+  line-height: 1.15;
+}
+
+.mini-layer.file { border-left-color: var(--orange); }
+.mini-layer.file .name { color: var(--orange); }
+.mini-layer.base { border-left-color: var(--blue); }
+.mini-layer.base .name { color: var(--blue); }
+.mini-layer.fallback {
+  border-color: #6b5524;
+  border-left-color: var(--amber);
+  border-style: dashed;
+}
+.mini-layer.fallback .name { color: var(--amber); }
+.mini-layer.env {
+  border-color: #7b3039;
+  border-left-color: #f85149;
+  background: #27171b;
+}
+.mini-layer.env .name { color: #ff7b72; }
+.mini-layer.cli {
+  border-color: #8a4740;
+  border-left-color: var(--orange);
+  background: #251a17;
+}
+.mini-layer.cli .name { color: var(--orange); }
+
+.model-caption {
+  margin-top: 15px;
+  padding-top: 11px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.5em;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.actual .model-caption {
+  border-top-color: #70323a;
+  color: #ffaaa5;
+}
+
+.comparison-divider {
+  position: relative;
+  color: #f85149;
+  font-size: 0.48em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.comparison-divider::before,
+.comparison-divider::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  height: 115px;
+  background: linear-gradient(transparent, #f85149, transparent);
+}
+
+.comparison-divider::before { bottom: calc(100% + 28px); }
+.comparison-divider::after { top: calc(100% + 28px); }
+
+.direct-bypass {
+  margin-top: 12px;
+  padding: 9px 11px;
+  border-left: 3px solid #f85149;
+  background: #27171b;
+  color: #ffaaa5;
+  font-size: 0.46em;
+  line-height: 1.2;
+}
+
+.direct-bypass strong { color: #ff7b72; }
+
+.comparison-takeaway {
+  position: absolute;
+  left: 42px;
+  right: 42px;
+  bottom: 12px;
+  color: #ffaaa5;
+  font-size: 0.45em;
+  text-align: center;
+}
+
+.comparison-takeaway strong { color: #f85149; }
+
+.source a {
+  color: #718096;
+  text-decoration: none;
+  border-bottom: 1px dotted #71809666;
+}
+
+@media (max-width: 900px) {
+  .reveal { font-size: 24px; }
+  .config-canvas { grid-template-columns: minmax(0, 1fr) 240px; gap: 18px; }
+  .stack-area { padding-left: 78px; padding-right: 20px; }
+  .stack-area::before { left: 44px; }
+  .precedence-label { left: -18px; }
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <section id="layered-config">
+      <h2>Layered configuration with centrally managed presets</h2>
+      <p class="subtitle">CLI flags take precedence; a central preset fills the base layer while repository overrides stay local.</p>
+
+      <div class="config-canvas">
+        <div class="stack-area" aria-label="Runtime configuration layers">
+          <div class="precedence-label">More specific values win</div>
+          <div class="effective">Effective runtime configuration</div>
+
+          <div class="layer cli">
+            <div class="file">CLI flags</div>
+            <div class="description">Explicit per-run overrides</div>
+          </div>
+          <div class="layer overlay">
+            <div class="file">.fullsend/config.yaml</div>
+            <div class="description">Repository-specific overrides</div>
+          </div>
+          <div class="layer base">
+            <div class="file">.fullsend/config.base.yaml</div>
+            <div class="description">Centrally managed preset or shared baseline</div>
+          </div>
+          <div class="layer compat">
+            <div class="file">Environment / repository variables</div>
+            <div class="description">Backwards-compatible fallback</div>
+          </div>
+          <div class="layer defaults">
+            <div class="file">Compiled-in code defaults</div>
+            <div class="description">Final fallback</div>
+          </div>
+        </div>
+
+        <aside class="side-path" aria-label="Control path for the base layer">
+          <div class="control-source">
+            <div class="eyebrow">Central source</div>
+            <div class="title">repos.yaml</div>
+            <div class="line"><span>config_base:</span> &lt;path-or-url&gt;</div>
+            <div class="line"><span>sha256:</span> optional hash</div>
+            <div class="line"><span>none:</span> disable inheritance</div>
+          </div>
+
+          <div class="control-action">
+            <div class="eyebrow">Distribution path</div>
+            <div class="title">fullsend repos config</div>
+            <div class="detail">Updates the base layer only</div>
+          </div>
+
+          <div class="control-note">
+            <strong>Preset refresh</strong><br>
+            Replaces <code>config.base.yaml</code> without clobbering the local overlay.
+          </div>
+        </aside>
+      </div>
+
+      <div class="source">
+        Source: <a href="https://github.com/fullsend-ai/fullsend/blob/main/docs/ADRs/0069-ready-made-configuration-presets.md">ADR 0069</a>
+        · <a href="https://github.com/fullsend-ai/fullsend/blob/main/docs/architecture.md">architecture.md</a>
+        · <a href="https://github.com/fullsend-ai/fullsend/pull/7636">PR #7636</a>
+      </div>
+      <div class="footnote">Also supported: <code>fullsend repos config</code> can set <code>config.yaml</code> values from <code>repos.yaml</code>.</div>
+    </section>
+
+    <section id="precedence-drift">
+      <h2>Environment variables have the wrong precedence</h2>
+      <p class="subtitle">The intended model treats them as a compatibility fallback. The implementation treats them as runtime overrides.</p>
+
+      <div class="precedence-compare">
+        <div class="model-col intended">
+          <div class="model-label">Intended model</div>
+          <div class="model-stack">
+            <div class="mini-layer file">
+              <div class="name">config.yaml</div>
+              <div class="meaning">Repository override</div>
+            </div>
+            <div class="mini-layer base">
+              <div class="name">config.base.yaml</div>
+              <div class="meaning">Central preset</div>
+            </div>
+            <div class="mini-layer fallback">
+              <div class="name">env / repo vars</div>
+              <div class="meaning">Compatibility fallback</div>
+            </div>
+            <div class="mini-layer">
+              <div class="name">code defaults</div>
+              <div class="meaning">Final fallback</div>
+            </div>
+          </div>
+          <div class="model-caption">The layered accessor chain resolves the value.</div>
+        </div>
+
+        <div class="comparison-divider">Same input<br>different<br>precedence</div>
+
+        <div class="model-col actual">
+          <div class="model-label">Current implementation</div>
+          <div class="model-stack">
+            <div class="mini-layer env">
+              <div class="name">workflow env / repo vars</div>
+              <div class="meaning">Injected runtime input</div>
+            </div>
+            <div class="mini-layer cli">
+              <div class="name">CLI flags from env</div>
+              <div class="meaning">Passed to fullsend commands</div>
+            </div>
+            <div class="mini-layer file">
+              <div class="name">config.yaml</div>
+              <div class="meaning">File layer</div>
+            </div>
+            <div class="mini-layer base">
+              <div class="name">config.base.yaml</div>
+              <div class="meaning">Preset layer</div>
+            </div>
+            <div class="mini-layer">
+              <div class="name">code defaults</div>
+              <div class="meaning">Final fallback</div>
+            </div>
+          </div>
+          <div class="direct-bypass"><strong>Separate bypass:</strong> workflow scripts also read configuration variables directly instead of using the layered accessor chain.</div>
+        </div>
+      </div>
+
+      <div class="comparison-takeaway"><strong>Result:</strong> the caller path, rather than the layered configuration model, decides the effective value.</div>
+    </section>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: true,
+  transition: 'slide',
+  width: 1280,
+  height: 700,
+  margin: 0.1,
+});
+</script>
+</body>
+</html>
