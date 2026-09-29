@@ -269,6 +269,529 @@
 
 .takeaway strong { color: var(--green); }
 
+.mental-slide {
+  background:
+    radial-gradient(circle at 12% 13%, #14283d 0, transparent 24%),
+    radial-gradient(circle at 91% 88%, #172b25 0, transparent 22%),
+    var(--bg);
+}
+
+.mental-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.mental-head .lede {
+  max-width: 405px;
+  color: var(--muted);
+  font-size: 0.54em;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.mental-visual {
+  position: relative;
+  height: 445px;
+  margin-top: 30px;
+}
+
+.mental-label {
+  color: var(--dim);
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.platform-map {
+  display: grid;
+  grid-template-columns: 1fr 54px 1.42fr 54px 1fr;
+  gap: 14px;
+  align-items: stretch;
+  height: 100%;
+}
+
+.mental-visual.platform-map { height: 445px; }
+
+.map-zone {
+  position: relative;
+  min-width: 0;
+  padding: 22px 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #0d131bcc;
+}
+
+.map-zone h3 {
+  margin-top: 9px;
+  color: var(--text);
+  font-size: 0.8em;
+  line-height: 1.1;
+}
+
+.map-zone p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.46em;
+  line-height: 1.35;
+}
+
+.forge-zone { border-top: 3px solid var(--blue); }
+.runtime-zone { border-top: 3px solid var(--purple); }
+
+.forge-items,
+.runtime-items {
+  display: grid;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.map-item {
+  padding: 15px 15px 14px;
+  border: 1px solid #2b3948;
+  border-radius: 10px;
+  background: #111a24;
+}
+
+.map-item strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.58em;
+  line-height: 1.2;
+}
+
+.map-item small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.42em;
+  line-height: 1.3;
+}
+
+.map-connector {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 11px;
+  color: var(--dim);
+}
+
+.map-connector::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+
+.map-connector.right::before {
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
+}
+
+.map-connector span {
+  color: var(--muted);
+  font-size: 0.4em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: rotate(-90deg);
+}
+
+.fullsend-zone {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  border-color: #36536f;
+  background: linear-gradient(180deg, #122131, #0d131b 72%);
+  box-shadow: 0 20px 70px #0000002e;
+}
+
+.fullsend-zone h3 { color: var(--blue); }
+
+.stack {
+  display: grid;
+  align-content: center;
+  gap: 7px;
+  min-height: 0;
+  margin: 14px 0;
+}
+
+.stack-layer {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 14px;
+  border-left: 3px solid var(--blue);
+  border-radius: 7px;
+  background: #172536;
+}
+
+.stack-layer:nth-child(2) { border-left-color: var(--purple); background: #1b2130; }
+.stack-layer:nth-child(3) { border-left-color: var(--orange); background: #25221d; }
+.stack-layer:nth-child(4) { border-left-color: var(--green); background: #17271f; }
+
+.stack-layer strong {
+  color: var(--text);
+  font-size: 0.53em;
+}
+
+.stack-layer small {
+  color: var(--muted);
+  font-size: 0.42em;
+  line-height: 1.25;
+}
+
+.platform-note {
+  padding-top: 13px;
+  border-top: 1px solid #2b435a;
+  color: #b7d5ee;
+  font-size: 0.44em;
+  line-height: 1.35;
+}
+
+.runtime-zone .map-item:first-child { border-color: #554475; background: #1d1a2a; }
+.runtime-zone .map-item:last-child { border-color: #3e5d4a; background: #17231d; }
+
+.boundary-layout {
+  display: grid;
+  grid-template-columns: 1.45fr 0.75fr;
+  gap: 28px;
+  height: 500px;
+  margin-top: 28px;
+}
+
+.boundary-stage {
+  position: relative;
+  min-width: 0;
+  padding: 23px 24px 24px;
+  border: 1px solid #36536f;
+  border-radius: 18px;
+  background: #0d131bcc;
+}
+
+.boundary-stage::before,
+.boundary-stage::after {
+  position: absolute;
+  left: 50%;
+  color: var(--dim);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.43em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
+
+.boundary-stage::before { content: "event enters"; top: 9px; }
+.boundary-stage::after { content: "validated result leaves"; bottom: 8px; }
+
+.boundary-shell {
+  position: absolute;
+  border-radius: 13px;
+}
+
+.runner-shell {
+  inset: 49px 30px 37px;
+  border: 2px solid var(--blue);
+  background: #101c2a;
+}
+
+.sandbox-shell {
+  inset: 60px 29px 55px;
+  border: 2px solid var(--orange);
+  background: #1c1b17;
+}
+
+.runtime-shell {
+  inset: 69px 30px 66px;
+  border: 2px solid var(--purple);
+  background: #211c2a;
+}
+
+.shell-label {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  color: currentColor;
+  font-size: 0.48em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.runner-shell .shell-label { color: var(--blue); }
+.sandbox-shell .shell-label { color: var(--orange); }
+.runtime-shell .shell-label { color: var(--purple); }
+
+.shell-body {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 68%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.shell-body strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.82em;
+  line-height: 1.1;
+}
+
+.shell-body small {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.46em;
+  line-height: 1.35;
+}
+
+.harness-strip,
+.validation-strip {
+  position: absolute;
+  left: 50%;
+  width: 63%;
+  padding: 7px 10px;
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 0.43em;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.harness-strip {
+  top: 77px;
+  border: 1px solid #416b77;
+  background: #163039;
+}
+
+.validation-strip {
+  bottom: 51px;
+  border: 1px solid #527457;
+  background: #18261d;
+}
+
+.boundary-notes {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+}
+
+.boundary-note-card {
+  padding: 17px 18px;
+  border-left: 3px solid var(--green);
+  border-radius: 0 10px 10px 0;
+  background: #111c18;
+}
+
+.boundary-note-card:nth-child(2) { border-left-color: var(--orange); background: #211d17; }
+.boundary-note-card:nth-child(3) { border-left-color: var(--purple); background: #1c1824; }
+
+.boundary-note-card strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.57em;
+  line-height: 1.2;
+}
+
+.boundary-note-card p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.45em;
+  line-height: 1.35;
+}
+
+.coordination-layout {
+  display: grid;
+  grid-template-columns: 0.72fr 1.55fr 0.72fr;
+  gap: 18px;
+  height: 500px;
+  margin-top: 27px;
+  align-items: center;
+}
+
+.agent-rail {
+  display: grid;
+  gap: 13px;
+}
+
+.agent-rail-label {
+  color: var(--dim);
+  font-size: 0.4em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.agent-card {
+  padding: 16px 14px;
+  border: 1px solid #2b3948;
+  border-radius: 10px;
+  background: #111a24;
+}
+
+.agent-card strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.57em;
+  line-height: 1.15;
+}
+
+.agent-card small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.41em;
+  line-height: 1.3;
+}
+
+.agent-card.triage { border-top: 3px solid var(--blue); }
+.agent-card.code { border-top: 3px solid var(--purple); }
+.agent-card.review { border-top: 3px solid var(--orange); }
+.agent-card.ci { border-top: 3px solid var(--green); }
+
+.repo-board {
+  position: relative;
+  height: 100%;
+  padding: 25px 25px 20px;
+  border: 2px solid var(--green);
+  border-radius: 18px;
+  background: #101c17;
+  box-shadow: 0 20px 70px #0000002e;
+}
+
+.repo-board > .mental-label { color: var(--green); }
+
+.repo-state {
+  display: grid;
+  grid-template-columns: 0.8fr 1.1fr 0.9fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.state-card {
+  min-height: 115px;
+  padding: 15px;
+  border: 1px solid #315143;
+  border-radius: 9px;
+  background: #15241b;
+}
+
+.state-card.pr { border-color: #6c5234; background: #292118; }
+
+.state-card strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.57em;
+  line-height: 1.15;
+}
+
+.state-card small {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.42em;
+  line-height: 1.35;
+}
+
+.state-card .state-mark {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.46em;
+}
+
+.state-card.pr .state-mark { color: var(--orange); }
+
+.repo-lines {
+  display: grid;
+  gap: 7px;
+  margin-top: 17px;
+  padding: 14px 16px;
+  border-top: 1px solid #315143;
+  border-bottom: 1px solid #315143;
+}
+
+.repo-line {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 0.43em;
+  line-height: 1.25;
+}
+
+.repo-line span { color: var(--green); }
+
+.merge-gate {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 17px 18px;
+  border: 1px solid #5e805f;
+  border-radius: 10px;
+  background: #17271b;
+}
+
+.merge-gate strong {
+  display: block;
+  color: var(--green);
+  font-size: 0.6em;
+  line-height: 1.15;
+}
+
+.merge-gate small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.42em;
+  line-height: 1.3;
+}
+
+.gate-badge {
+  padding: 9px 11px;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  color: var(--green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.42em;
+  white-space: nowrap;
+}
+
+.coordination-note {
+  padding: 20px 17px;
+  border: 1px solid #51436c;
+  border-radius: 12px;
+  background: #181522;
+}
+
+.coordination-note strong {
+  display: block;
+  color: var(--purple);
+  font-size: 0.62em;
+  line-height: 1.2;
+}
+
+.coordination-note p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.45em;
+  line-height: 1.4;
+}
+
+.coordination-note em {
+  display: block;
+  margin-top: 16px;
+  color: var(--text);
+  font-size: 0.45em;
+  font-style: normal;
+  line-height: 1.35;
+}
+
 .reveal .slide-number {
   right: 22px;
   bottom: 14px;
@@ -286,6 +809,18 @@
   .stage { min-height: 47px; grid-template-columns: 78px 1fr; }
   .stage-index { margin-left: 18px; width: 34px; height: 34px; }
   .agenda-list { gap: 0 26px; padding-left: 0; }
+  .mental-head { display: block; }
+  .mental-head .lede { margin-top: 12px; text-align: left; }
+  .mental-visual { height: 450px; }
+  .mental-visual.platform-map { height: 450px; }
+  .platform-map { grid-template-columns: 1fr; gap: 10px; overflow: auto; }
+  .map-connector { display: none; }
+  .boundary-layout,
+  .coordination-layout { grid-template-columns: 1fr; height: auto; }
+  .boundary-stage { height: 430px; }
+  .coordination-layout { gap: 12px; }
+  .agent-rail { grid-template-columns: 1fr 1fr; }
+  .coordination-note { display: none; }
 }
 </style>
 </head>
@@ -355,6 +890,129 @@
       </div>
 
       <div class="takeaway"><strong>By the end:</strong> you should know where your agent belongs, how to build it, and how to contribute it back responsibly.</div>
+    </section>
+
+    <section class="mental-slide" id="mental-map">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">01 · The Fullsend mental model</div>
+          <h2>Fullsend turns repository events into bounded agent work</h2>
+        </div>
+        <p class="lede">The forge remains the system of record. Fullsend supplies the machinery that turns repository state into controlled execution.</p>
+      </div>
+
+      <div class="mental-visual platform-map" aria-label="Fullsend between a Git-hosted organization and agent runtimes">
+        <div class="map-zone forge-zone">
+          <div class="mental-label">Git-hosted organization</div>
+          <h3>Repository state</h3>
+          <p>Events and policies already live where the work is visible.</p>
+          <div class="forge-items">
+            <div class="map-item"><strong>Issue or request</strong><small>intent enters the system</small></div>
+            <div class="map-item"><strong>Pull request</strong><small>changes become reviewable</small></div>
+            <div class="map-item"><strong>Branch protection</strong><small>merge rules remain explicit</small></div>
+          </div>
+        </div>
+
+        <div class="map-connector"><span>events</span></div>
+
+        <div class="map-zone fullsend-zone">
+          <div>
+            <div class="mental-label">Fullsend platform</div>
+            <h3>Controlled execution</h3>
+          </div>
+          <div class="stack">
+            <div class="stack-layer"><strong>Dispatch</strong><small>selects the work and role</small></div>
+            <div class="stack-layer"><strong>Runner</strong><small>prepares, executes, validates</small></div>
+            <div class="stack-layer"><strong>Sandbox</strong><small>limits files, network, tools</small></div>
+            <div class="stack-layer"><strong>Harness</strong><small>assembles context and behavior</small></div>
+          </div>
+          <div class="platform-note">A runtime acts inside these boundaries, then returns inspectable artifacts to the repository.</div>
+        </div>
+
+        <div class="map-connector right"><span>actions</span></div>
+
+        <div class="map-zone runtime-zone">
+          <div class="mental-label">Agent runtime</div>
+          <h3>Reason and act</h3>
+          <p>A model uses the tools and context the harness makes available.</p>
+          <div class="runtime-items">
+            <div class="map-item"><strong>Read · edit · test</strong><small>the task-scoped work loop</small></div>
+            <div class="map-item"><strong>Report · propose · iterate</strong><small>results become repository-visible state</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mental-slide" id="run-boundaries">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">01 · The Fullsend mental model</div>
+          <h2>One agent run is a set of nested boundaries</h2>
+        </div>
+        <p class="lede">Each outer layer prepares and constrains the layer inside it. The runtime never owns the boundary around itself.</p>
+      </div>
+
+      <div class="boundary-layout">
+        <div class="boundary-stage" aria-label="Nested Fullsend execution boundaries">
+          <div class="boundary-shell runner-shell">
+            <div class="shell-label">Fullsend runner</div>
+            <div class="harness-strip">harness: prompt · skills · tools · policy</div>
+            <div class="boundary-shell sandbox-shell">
+              <div class="shell-label">ephemeral sandbox</div>
+              <div class="boundary-shell runtime-shell">
+                <div class="shell-label">agent runtime</div>
+                <div class="shell-body"><strong>read · edit · test</strong><small>the model works here, inside the limits of the enclosing layers</small></div>
+              </div>
+            </div>
+            <div class="validation-strip">validate output · extract artifacts · apply results</div>
+          </div>
+        </div>
+
+        <div class="boundary-notes">
+          <div class="boundary-note-card"><strong>Credentials stop at the runner</strong><p>The sandbox operates without broad external credentials.</p></div>
+          <div class="boundary-note-card"><strong>The sandbox contains the run</strong><p>Filesystem and network policy limit the blast radius of a task.</p></div>
+          <div class="boundary-note-card"><strong>Validation gates the exit</strong><p>Only checked and extracted output crosses back to the forge.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mental-slide" id="repo-coordinator">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">01 · The Fullsend mental model</div>
+          <h2>The repository coordinates the agents</h2>
+        </div>
+        <p class="lede">Agents work independently. The repository makes their work visible, comparable, and subject to deterministic merge rules.</p>
+      </div>
+
+      <div class="coordination-layout">
+        <div class="agent-rail">
+          <div class="agent-rail-label">independent agents</div>
+          <div class="agent-card triage"><strong>Triage</strong><small>labels and routes the issue</small></div>
+          <div class="agent-card code"><strong>Code</strong><small>creates and updates the PR</small></div>
+        </div>
+
+        <div class="repo-board" aria-label="Repository as coordinator">
+          <div class="mental-label">shared repository state</div>
+          <div class="repo-state">
+            <div class="state-card"><span class="state-mark">ISSUE</span><strong>Intent and context</strong><small>the work item gives agents a visible starting point</small></div>
+            <div class="state-card pr"><span class="state-mark">PULL REQUEST</span><strong>One review surface</strong><small>commits, comments, checks, and findings meet here</small></div>
+            <div class="state-card"><span class="state-mark">BRANCH</span><strong>Protected outcome</strong><small>the target branch accepts only allowed state</small></div>
+          </div>
+          <div class="repo-lines">
+            <div class="repo-line"><span>labels</span> route work and record classification</div>
+            <div class="repo-line"><span>comments</span> carry feedback as visible, untrusted input</div>
+            <div class="repo-line"><span>status checks</span> publish independent review results</div>
+          </div>
+          <div class="merge-gate"><div><strong>Deterministic merge gate</strong><small>required checks pass · required approvals exist · no blocking review remains</small></div><div class="gate-badge">state → decision</div></div>
+        </div>
+
+        <div class="agent-rail">
+          <div class="agent-rail-label">independent signals</div>
+          <div class="agent-card review"><strong>Review agents</strong><small>evaluate the PR without trusting prior reviews</small></div>
+          <div class="agent-card ci"><strong>CI and humans</strong><small>contribute checks and approval where paths require it</small></div>
+        </div>
+      </div>
     </section>
   </div>
 </div>
