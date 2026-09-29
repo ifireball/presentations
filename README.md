@@ -11,6 +11,7 @@ Each top-level folder is a self-contained presentation with its own HTML pages, 
 | Folder | Description |
 |--------|-------------|
 | [`fullsend-demo/`](fullsend-demo/) | Fullsend agentic SDLC slide deck and live demo walkthrough |
+| [`fullsend-inro-for-adlc/`](fullsend-inro-for-adlc/) | Title and agenda for a Fullsend agent-building and contribution talk |
 | [`fullsend-layered-configs/`](fullsend-layered-configs/) | Two-slide visual explanation of Fullsend configuration layers and runtime precedence drift |
 
 Supporting scripts in [`scripts/`](scripts/) regenerate the landing page and prepare the GitHub Pages artifact. There is no bundler or compile step—the HTML files are served as-is.

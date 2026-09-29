@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Agents on Fullsend</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+:root {
+  --bg: #0a0e14;
+  --surface: #131920;
+  --surface-2: #161b22;
+  --border: #26313d;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --dim: #6e7681;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --green: #3fb950;
+  --orange: #ffa657;
+  --red: #f85149;
+}
+
+* { box-sizing: border-box; }
+
+.reveal {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.reveal .slides section {
+  text-align: left;
+  padding: 42px 58px 34px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal p { margin: 0; }
+
+.reveal h1 {
+  font-size: 2.28em;
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  font-weight: 800;
+}
+
+.reveal h2 {
+  color: var(--blue);
+  font-size: 1.4em;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.kicker {
+  color: var(--green);
+  font-size: 0.48em;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.9em;
+}
+
+.accent { color: var(--blue); }
+.muted { color: var(--muted); }
+
+.title-slide {
+  display: grid !important;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 52px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 87% 17%, #16304b 0, transparent 28%),
+    radial-gradient(circle at 74% 92%, #172b25 0, transparent 24%),
+    var(--bg);
+}
+
+.title-copy { padding: 12px 0 10px; }
+
+.title-copy h1 span {
+  color: var(--blue);
+  display: block;
+}
+
+.title-copy .subtitle {
+  max-width: 650px;
+  margin-top: 0.82em;
+  color: var(--muted);
+  font-size: 0.76em;
+  line-height: 1.35;
+}
+
+.title-copy .audience {
+  margin-top: 2.15em;
+  color: var(--dim);
+  font-size: 0.49em;
+  letter-spacing: 0.015em;
+}
+
+.lifecycle {
+  position: relative;
+  height: 450px;
+  padding: 34px 24px 24px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #0d131b99;
+  box-shadow: 0 24px 80px #00000033;
+}
+
+.lifecycle::before {
+  content: "";
+  position: absolute;
+  top: 78px;
+  bottom: 78px;
+  left: 78px;
+  width: 2px;
+  background: linear-gradient(var(--blue), var(--purple) 52%, var(--green));
+}
+
+.lifecycle-label {
+  color: var(--dim);
+  font-size: 0.43em;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  align-items: center;
+  min-height: 75px;
+}
+
+.stage-index {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-left: 32px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: var(--bg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.52em;
+  font-weight: 700;
+}
+
+.stage-text strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.69em;
+  line-height: 1.2;
+}
+
+.stage-text small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.47em;
+  line-height: 1.3;
+}
+
+.stage.issue { color: var(--blue); }
+.stage.build { color: var(--purple); }
+.stage.review { color: var(--orange); }
+.stage.merge { color: var(--green); }
+
+.boundary-note {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  color: var(--dim);
+  font-size: 0.42em;
+  text-align: right;
+  line-height: 1.35;
+}
+
+.boundary-note strong { color: var(--green); }
+
+.agenda-slide {
+  background:
+    linear-gradient(90deg, transparent 0 8%, #132238 8% 8.15%, transparent 8.15%),
+    var(--bg);
+}
+
+.agenda-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.agenda-head .lede {
+  max-width: 390px;
+  color: var(--muted);
+  font-size: 0.55em;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.agenda-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 56px;
+  margin-top: 31px;
+  padding-left: 18px;
+}
+
+.agenda-item {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 17px;
+  min-height: 121px;
+  padding: 8px 0 17px;
+  border-bottom: 1px solid #202a35;
+}
+
+.agenda-number {
+  color: var(--blue);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.67em;
+  font-weight: 700;
+  padding-top: 4px;
+}
+
+.agenda-item h3 {
+  color: var(--text);
+  font-size: 0.75em;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.agenda-item p {
+  max-width: 395px;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.49em;
+  line-height: 1.38;
+}
+
+.agenda-item:nth-child(2) .agenda-number { color: var(--purple); }
+.agenda-item:nth-child(3) .agenda-number { color: var(--orange); }
+.agenda-item:nth-child(4) .agenda-number { color: var(--green); }
+.agenda-item:nth-child(5) .agenda-number { color: var(--red); }
+
+.takeaway {
+  position: absolute;
+  left: 76px;
+  right: 58px;
+  bottom: 31px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--green);
+  background: #102219;
+  color: #b7e3bf;
+  font-size: 0.51em;
+  line-height: 1.35;
+}
+
+.takeaway strong { color: var(--green); }
+
+.reveal .slide-number {
+  right: 22px;
+  bottom: 14px;
+  color: var(--dim);
+  background: transparent;
+  font-size: 0.42em;
+}
+
+@media (max-width: 900px) {
+  .reveal { font-size: 24px; }
+  .reveal .slides section { padding: 30px 34px 26px; }
+  .title-slide { grid-template-columns: 1fr; gap: 20px; }
+  .lifecycle { height: 310px; }
+  .lifecycle::before { top: 62px; bottom: 45px; }
+  .stage { min-height: 47px; grid-template-columns: 78px 1fr; }
+  .stage-index { margin-left: 18px; width: 34px; height: 34px; }
+  .agenda-list { gap: 0 26px; padding-left: 0; }
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <section class="title-slide" id="title">
+      <div class="title-copy">
+        <div class="kicker">Fullsend · Agent architecture and contribution</div>
+        <h1><span>Building Agents</span> on Fullsend</h1>
+        <p class="subtitle">From ADLC Workflows to Autonomous Software Development</p>
+        <p class="audience">A practical introduction for engineers building agents on the platform and contributing to it.</p>
+      </div>
+
+      <div class="lifecycle" aria-label="Fullsend software development lifecycle">
+        <div class="lifecycle-label">One platform boundary across the lifecycle</div>
+        <div class="stage issue">
+          <div class="stage-index">01</div>
+          <div class="stage-text"><strong>Triage issues</strong><small>Turn repository context into a useful starting point</small></div>
+        </div>
+        <div class="stage build">
+          <div class="stage-index">02</div>
+          <div class="stage-text"><strong>Implement changes</strong><small>Run focused work inside explicit boundaries</small></div>
+        </div>
+        <div class="stage review">
+          <div class="stage-index">03</div>
+          <div class="stage-text"><strong>Review code</strong><small>Produce evidence people can inspect and trust</small></div>
+        </div>
+        <div class="stage merge">
+          <div class="stage-index">04</div>
+          <div class="stage-text"><strong>Merge to production</strong><small>Advance software through controlled forge actions</small></div>
+        </div>
+        <div class="boundary-note"><strong>execution · orchestration · security · evidence</strong><br>the boundaries that make autonomy usable</div>
+      </div>
+    </section>
+
+    <section class="agenda-slide" id="agenda">
+      <div class="agenda-head">
+        <div>
+          <div class="kicker">Today’s route</div>
+          <h2>From mental model to contribution path</h2>
+        </div>
+        <p class="lede">We will connect the agent-building surface to the controls that make autonomous development trustworthy.</p>
+      </div>
+
+      <div class="agenda-list">
+        <div class="agenda-item">
+          <div class="agenda-number">01</div>
+          <div><h3>The Fullsend mental model</h3><p>Where the platform sits between Git-hosted organizations and the autonomous development lifecycle.</p></div>
+        </div>
+        <div class="agenda-item">
+          <div class="agenda-number">02</div>
+          <div><h3>How an agent is composed</h3><p>Harnesses, runtimes, skills, and lifecycle hooks as the building blocks of agent behavior.</p></div>
+        </div>
+        <div class="agenda-item">
+          <div class="agenda-number">03</div>
+          <div><h3>Trust boundaries in execution</h3><p>Context, credentials, sandboxing, forge interactions, and the evidence behind each action.</p></div>
+        </div>
+        <div class="agenda-item">
+          <div class="agenda-number">04</div>
+          <div><h3>Extension points and architecture</h3><p>Where custom agents fit, which principles shape the platform, and how it stays extensible.</p></div>
+        </div>
+        <div class="agenda-item">
+          <div class="agenda-number">05</div>
+          <div><h3>Building and contributing safely</h3><p>Testing new capabilities, evaluating trustworthiness, and evolving Fullsend without losing control.</p></div>
+        </div>
+      </div>
+
+      <div class="takeaway"><strong>By the end:</strong> you should know where your agent belongs, how to build it, and how to contribute it back responsibly.</div>
+    </section>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: true,
+  transition: 'slide',
+  width: 1280,
+  height: 700,
+  margin: 0.1,
+});
+</script>
+</body>
+</html>
