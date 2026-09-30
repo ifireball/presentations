@@ -792,6 +792,553 @@
   line-height: 1.35;
 }
 
+.composition-slide {
+  background:
+    radial-gradient(circle at 7% 88%, #1a2938 0, transparent 22%),
+    radial-gradient(circle at 92% 12%, #241b31 0, transparent 22%),
+    var(--bg);
+}
+
+.harness-hub-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr 1fr;
+  gap: 18px;
+  height: 430px;
+  margin-top: 27px;
+  align-items: stretch;
+}
+
+.hub-column {
+  display: grid;
+  align-content: center;
+  gap: 12px;
+}
+
+.hub-group {
+  position: relative;
+  padding: 14px 15px 13px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #111923d9;
+}
+
+.hub-group::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 1px;
+  background: var(--border);
+}
+
+.hub-column.left .hub-group::after { right: -19px; }
+.hub-column.right .hub-group::after { left: -19px; }
+
+.hub-group.behavior { border-top: 3px solid var(--blue); }
+.hub-group.execution { border-top: 3px solid var(--orange); }
+.hub-group.lifecycle-group { border-top: 3px solid var(--green); }
+.hub-group.dispatch { border-top: 3px solid var(--purple); }
+.hub-group.identity { border-top: 3px solid var(--red); }
+
+.hub-group h3 {
+  color: var(--text);
+  font-size: 0.61em;
+  line-height: 1.15;
+}
+
+.hub-group p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.42em;
+  line-height: 1.3;
+}
+
+.hub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.hub-tags span,
+.adapter-item,
+.context-chip {
+  padding: 5px 7px;
+  border: 1px solid #334253;
+  border-radius: 6px;
+  color: #c8d3df;
+  background: #17212c;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.36em;
+  line-height: 1.15;
+}
+
+.harness-hub {
+  display: grid;
+  align-content: center;
+  min-width: 0;
+  padding: 25px 25px 23px;
+  border: 2px solid var(--blue);
+  border-radius: 20px;
+  background: linear-gradient(180deg, #142639, #111923 80%);
+  box-shadow: 0 22px 75px #00000042;
+}
+
+.harness-hub .mental-label { color: var(--blue); }
+
+.harness-hub h3 {
+  margin-top: 10px;
+  color: var(--text);
+  font-size: 1.04em;
+  line-height: 1.05;
+}
+
+.harness-hub > p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.46em;
+  line-height: 1.35;
+}
+
+.harness-file {
+  margin-top: 24px;
+  padding: 14px 15px;
+  border: 1px solid #3a5875;
+  border-radius: 9px;
+  background: #0c141d;
+  color: #b9d9f4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.45em;
+  line-height: 1.55;
+}
+
+.harness-file span { color: var(--green); }
+
+.hub-principle {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #2b435a;
+  color: #b7d5ee;
+  font-size: 0.44em;
+  line-height: 1.35;
+}
+
+.composition-flow {
+  display: grid;
+  grid-template-columns: 1fr 42px 1.1fr 42px 1.08fr;
+  gap: 12px;
+  height: 410px;
+  margin-top: 28px;
+  align-items: stretch;
+}
+
+.compose-column,
+.overlay-column {
+  display: grid;
+  align-content: center;
+  gap: 15px;
+}
+
+.compose-card,
+.overlay-card,
+.resolved-harness {
+  padding: 18px 18px 17px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: #111923d9;
+}
+
+.compose-card.base { border-top: 3px solid var(--blue); }
+.compose-card.child { border-top: 3px solid var(--purple); }
+.overlay-card { border-left: 3px solid var(--orange); background: #211c17; }
+
+.compose-card h3,
+.overlay-card h3,
+.resolved-harness h3 {
+  color: var(--text);
+  font-size: 0.64em;
+  line-height: 1.15;
+}
+
+.compose-card p,
+.overlay-card p,
+.resolved-harness p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.43em;
+  line-height: 1.35;
+}
+
+.compose-code {
+  margin-top: 14px;
+  padding: 10px 11px;
+  border-left: 2px solid currentColor;
+  background: #0d141d;
+  color: #b9d9f4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.37em;
+  line-height: 1.45;
+}
+
+.compose-card.child .compose-code { color: #d4bdff; }
+.overlay-card .compose-code { color: #ffd0a2; }
+
+.compose-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--dim);
+  font-size: 0.42em;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.compose-arrow::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+
+.compose-arrow span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.overlay-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.context-chip {
+  border-color: #6b5138;
+  color: #ffd0a2;
+  background: #2a2119;
+}
+
+.resolved-harness {
+  align-self: center;
+  min-height: 320px;
+  padding: 18px 18px;
+  border: 2px solid var(--green);
+  background: linear-gradient(180deg, #14271b, #111923 84%);
+  box-shadow: 0 22px 75px #00000038;
+}
+
+.resolved-harness .mental-label { color: var(--green); }
+
+.resolved-harness h3 { margin-top: 10px; font-size: 0.82em; }
+
+.resolved-stack {
+  display: grid;
+  gap: 7px;
+  margin-top: 22px;
+}
+
+.resolved-row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 10px;
+  padding: 9px 10px;
+  border-left: 3px solid var(--green);
+  background: #17271d;
+  color: var(--muted);
+  font-size: 0.39em;
+  line-height: 1.3;
+}
+
+.resolved-row strong { color: #b7e3bf; }
+
+.merge-rules {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.merge-rule {
+  padding: 11px 12px;
+  border-top: 2px solid var(--purple);
+  background: #181522;
+}
+
+.merge-rule strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.43em;
+  line-height: 1.2;
+}
+
+.merge-rule small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.36em;
+  line-height: 1.3;
+}
+
+.run-lifecycle {
+  height: 500px;
+  margin-top: 28px;
+  padding: 22px 22px 20px;
+  border: 1px solid #36536f;
+  border-radius: 18px;
+  background: #0d131bcc;
+}
+
+.lifecycle-control {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #2b435a;
+}
+
+.lifecycle-control strong {
+  color: var(--blue);
+  font-size: 0.58em;
+}
+
+.lifecycle-control span {
+  color: var(--muted);
+  font-size: 0.43em;
+}
+
+.run-zones {
+  display: grid;
+  grid-template-columns: 1.08fr 1.45fr 1.08fr;
+  gap: 12px;
+  margin-top: 23px;
+}
+
+.run-zone {
+  min-height: 315px;
+  padding: 16px 14px;
+  border: 1px solid #2b3948;
+  border-radius: 11px;
+  background: #111a24;
+}
+
+.run-zone.runner { border-top: 3px solid var(--green); }
+.run-zone.sandbox { border-top: 3px solid var(--orange); background: #211d17; }
+
+.run-zone h3 {
+  color: var(--text);
+  font-size: 0.6em;
+  line-height: 1.15;
+}
+
+.run-zone p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.4em;
+  line-height: 1.3;
+}
+
+.phase-list {
+  display: grid;
+  gap: 9px;
+  margin-top: 24px;
+}
+
+.phase {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 9px;
+  align-items: center;
+  padding: 10px 9px;
+  border: 1px solid #334253;
+  border-radius: 7px;
+  background: #17212c;
+}
+
+.phase-mark {
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.36em;
+}
+
+.sandbox .phase-mark { color: var(--orange); }
+
+.phase strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.43em;
+  line-height: 1.15;
+}
+
+.phase small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.35em;
+  line-height: 1.25;
+}
+
+.validation-loop {
+  position: relative;
+  margin-top: 24px;
+  padding: 18px 16px 18px 20px;
+  border: 1px solid #6b5138;
+  border-radius: 10px;
+  background: #2a2119;
+}
+
+.validation-loop::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 9px;
+  width: 2px;
+  background: var(--orange);
+}
+
+.validation-loop strong {
+  display: block;
+  color: #ffd0a2;
+  font-size: 0.49em;
+  line-height: 1.15;
+}
+
+.validation-loop p {
+  margin-top: 7px;
+  color: #c6a47d;
+  font-size: 0.39em;
+  line-height: 1.35;
+}
+
+.lifecycle-output {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid #315143;
+  color: #b7e3bf;
+  font-size: 0.42em;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.adapter-layout {
+  display: grid;
+  grid-template-columns: 0.83fr 2.1fr;
+  gap: 22px;
+  height: 500px;
+  margin-top: 28px;
+  align-items: center;
+}
+
+.adapter-hub {
+  position: relative;
+  min-height: 340px;
+  padding: 26px 22px;
+  border: 2px solid var(--blue);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #142639, #111923 84%);
+  box-shadow: 0 22px 75px #00000038;
+}
+
+.adapter-hub::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -23px;
+  width: 22px;
+  height: 2px;
+  background: var(--blue);
+}
+
+.adapter-hub .mental-label { color: var(--blue); }
+
+.adapter-hub h3 {
+  margin-top: 11px;
+  color: var(--text);
+  font-size: 0.95em;
+  line-height: 1.05;
+}
+
+.adapter-hub p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.44em;
+  line-height: 1.35;
+}
+
+.adapter-hub .harness-file { margin-top: 27px; }
+
+.adapter-bands {
+  display: grid;
+  gap: 12px;
+}
+
+.adapter-band {
+  display: grid;
+  grid-template-columns: 154px 1fr;
+  gap: 15px;
+  align-items: center;
+  min-height: 87px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--purple);
+  border-radius: 11px;
+  background: #111923d9;
+}
+
+.adapter-band.source { border-left-color: var(--blue); }
+.adapter-band.change { border-left-color: var(--orange); }
+.adapter-band.workflow { border-left-color: var(--green); }
+.adapter-band.runtime { border-left-color: var(--purple); }
+
+.adapter-band h3 {
+  color: var(--text);
+  font-size: 0.53em;
+  line-height: 1.15;
+}
+
+.adapter-band p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.38em;
+  line-height: 1.25;
+}
+
+.adapter-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.adapter-item {
+  padding: 9px 10px;
+  border-color: #3c4d60;
+  color: var(--text);
+  background: #17212c;
+  font-family: inherit;
+  font-size: 0.43em;
+}
+
+.adapter-band.source .adapter-item { border-color: #315b7f; background: #14283a; }
+.adapter-band.change .adapter-item { border-color: #6b5138; background: #2a2119; }
+.adapter-band.workflow .adapter-item { border-color: #315143; background: #15241b; }
+.adapter-band.runtime .adapter-item { border-color: #51436c; background: #181522; }
+
+.adapter-footnote {
+  margin-top: 14px;
+  color: var(--dim);
+  font-size: 0.4em;
+  line-height: 1.3;
+  text-align: right;
+}
+
 .reveal .slide-number {
   right: 22px;
   bottom: 14px;
@@ -816,11 +1363,22 @@
   .platform-map { grid-template-columns: 1fr; gap: 10px; overflow: auto; }
   .map-connector { display: none; }
   .boundary-layout,
-  .coordination-layout { grid-template-columns: 1fr; height: auto; }
+  .coordination-layout,
+  .harness-hub-layout,
+  .composition-flow,
+  .adapter-layout { grid-template-columns: 1fr; height: auto; }
   .boundary-stage { height: 430px; }
-  .coordination-layout { gap: 12px; }
+  .coordination-layout,
+  .harness-hub-layout,
+  .composition-flow,
+  .adapter-layout { gap: 12px; }
   .agent-rail { grid-template-columns: 1fr 1fr; }
   .coordination-note { display: none; }
+  .hub-group::after,
+  .adapter-hub::after { display: none; }
+  .merge-rules { grid-template-columns: 1fr 1fr; }
+  .run-lifecycle { height: auto; }
+  .run-zones { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1011,6 +1569,206 @@
           <div class="agent-rail-label">independent signals</div>
           <div class="agent-card review"><strong>Review agents</strong><small>evaluate the PR without trusting prior reviews</small></div>
           <div class="agent-card ci"><strong>CI and humans</strong><small>contribute checks and approval where paths require it</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="composition-slide" id="harness-definition">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">02 · How an agent is composed</div>
+          <h2>The harness defines the agent</h2>
+        </div>
+        <p class="lede">A harness connects the agent’s behavior to the environment, lifecycle, dispatch path, and authority it needs to run.</p>
+      </div>
+
+      <div class="harness-hub-layout">
+        <div class="hub-column left">
+          <div class="hub-group behavior">
+            <h3>Behavior</h3>
+            <p>What the runtime is asked to do</p>
+            <div class="hub-tags"><span>agent prompt</span><span>tools</span><span>model</span><span>skills</span><span>plugins</span></div>
+          </div>
+          <div class="hub-group execution">
+            <h3>Execution environment</h3>
+            <p>Where the agent can work and what it can reach</p>
+            <div class="hub-tags"><span>image</span><span>policy</span><span>providers</span><span>profiles</span><span>host files</span><span>env</span></div>
+          </div>
+        </div>
+
+        <div class="harness-hub">
+          <div class="mental-label">central configuration object</div>
+          <h3>harness/my-agent.yaml</h3>
+          <p>The harness turns a generic runtime into a specific Fullsend agent.</p>
+          <div class="harness-file"><span>agent:</span> agents/my-agent.md<br><span>role:</span> coder<br><span>trigger:</span> event.entity.kind == "work_item"<br><span>pre_script:</span> scripts/pre-agent.sh<br><span>post_script:</span> scripts/post-agent.sh</div>
+          <div class="hub-principle">One file links behavior, operating conditions, lifecycle, dispatch, and identity.</div>
+        </div>
+
+        <div class="hub-column right">
+          <div class="hub-group lifecycle-group">
+            <h3>Lifecycle</h3>
+            <p>What happens before, during, and after the runtime</p>
+            <div class="hub-tags"><span>pre-script</span><span>runtime</span><span>validation</span><span>post-script</span><span>timeouts</span></div>
+          </div>
+          <div class="hub-group dispatch">
+            <h3>Dispatch</h3>
+            <p>When this harness should be selected</p>
+            <div class="hub-tags"><span>trigger</span><span>normalized event</span><span>config registration</span></div>
+          </div>
+          <div class="hub-group identity">
+            <h3>Identity</h3>
+            <p>Which authority the run receives</p>
+            <div class="hub-tags"><span>role</span><span>permissions</span><span>scoped credentials</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="composition-slide" id="harness-composition">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">02 · How an agent is composed</div>
+          <h2>Base and overlays resolve one harness</h2>
+        </div>
+        <p class="lede">Base harnesses provide lineage. Overlays add conditional deltas for the event, forge, runtime, or repository.</p>
+      </div>
+
+      <div class="composition-flow">
+        <div class="compose-column">
+          <div class="mental-label">structural inheritance</div>
+          <div class="compose-card base">
+            <h3>base harness</h3>
+            <p>Shared upstream definition</p>
+            <div class="compose-code">base: agents/code.yaml<br>policy: policies/base.yaml<br>skills: [review, tests]</div>
+          </div>
+          <div class="compose-card child">
+            <h3>local child harness</h3>
+            <p>Repository-owned changes</p>
+            <div class="compose-code">model: sonnet<br>skills: [team-linting]<br>timeout_minutes: 45</div>
+          </div>
+        </div>
+
+        <div class="compose-arrow"><span>merge</span></div>
+
+        <div class="overlay-column">
+          <div class="mental-label">conditional overlays</div>
+          <div class="overlay-context"><span class="context-chip">event.source.system = jira</span><span class="context-chip">runtime.forge = github</span></div>
+          <div class="overlay-card">
+            <h3>matching overlay</h3>
+            <p>Apply only when its condition is true</p>
+            <div class="compose-code">when: event.source.system == "jira"<br>skills: [jira-context]<br>pre_script: scripts/pre-jira.sh</div>
+          </div>
+          <div class="overlay-card">
+            <h3>another matching overlay</h3>
+            <p>Later matches can refine the result</p>
+            <div class="compose-code">when: runtime.forge == "github"<br>providers: [providers/github]<br>post_script: scripts/post-gh.sh</div>
+          </div>
+        </div>
+
+        <div class="compose-arrow"><span>resolve</span></div>
+
+        <div class="resolved-harness">
+          <div class="mental-label">effective configuration</div>
+          <h3>resolved harness</h3>
+          <p>The runner sees one concrete agent definition after inheritance and context are applied.</p>
+          <div class="resolved-stack">
+            <div class="resolved-row"><strong>model</strong><span>child replaces base</span></div>
+            <div class="resolved-row"><strong>skills</strong><span>merged by name</span></div>
+            <div class="resolved-row"><strong>providers</strong><span>base + overlay additions</span></div>
+            <div class="resolved-row"><strong>validation</strong><span>fields inherit selectively</span></div>
+            <div class="resolved-row"><strong>scripts</strong><span>context selects the active path</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="merge-rules">
+        <div class="merge-rule"><strong>Base first</strong><small>inherit the upstream lineage</small></div>
+        <div class="merge-rule"><strong>Child wins</strong><small>local scalar values override</small></div>
+        <div class="merge-rule"><strong>All matches apply</strong><small>overlays merge in order</small></div>
+        <div class="merge-rule"><strong>One effective harness</strong><small>the runtime receives the result</small></div>
+      </div>
+    </section>
+
+    <section class="composition-slide" id="harness-lifecycle">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">02 · How an agent is composed</div>
+          <h2>The harness controls the run lifecycle</h2>
+        </div>
+        <p class="lede">The harness turns one event into a bounded sequence of preparation, reasoning, validation, and repository-visible output.</p>
+      </div>
+
+      <div class="run-lifecycle">
+        <div class="lifecycle-control"><strong>Harness control plane</strong><span>trigger · scripts · sandbox · runtime · validation · output</span></div>
+        <div class="run-zones">
+          <div class="run-zone runner">
+            <h3>Runner before</h3>
+            <p>Deterministic setup outside the sandbox</p>
+            <div class="phase-list">
+              <div class="phase"><div class="phase-mark">01</div><div><strong>Trigger match</strong><small>select the harness for the event</small></div></div>
+              <div class="phase"><div class="phase-mark">02</div><div><strong>Pre-script</strong><small>prepare context or skip the run</small></div></div>
+              <div class="phase"><div class="phase-mark">03</div><div><strong>Bootstrap</strong><small>assemble the configured run</small></div></div>
+            </div>
+          </div>
+
+          <div class="run-zone sandbox">
+            <h3>Sandbox runtime</h3>
+            <p>The model works inside the configured environment</p>
+            <div class="phase-list">
+              <div class="phase"><div class="phase-mark">04</div><div><strong>Read · edit · test</strong><small>use the prompt, tools, skills, and repo</small></div></div>
+              <div class="validation-loop"><strong>Validation loop</strong><p>Check structured output. If it fails, return bounded feedback for another iteration.</p></div>
+              <div class="phase"><div class="phase-mark">05</div><div><strong>Validated output</strong><small>extract the artifact that can leave the run</small></div></div>
+            </div>
+          </div>
+
+          <div class="run-zone runner">
+            <h3>Runner after</h3>
+            <p>Apply only the checked result</p>
+            <div class="phase-list">
+              <div class="phase"><div class="phase-mark">06</div><div><strong>Post-script</strong><small>translate output into forge actions</small></div></div>
+              <div class="phase"><div class="phase-mark">07</div><div><strong>Repository result</strong><small>comment, branch, PR, MR, or status</small></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="lifecycle-output">The harness defines the path. The repository receives the evidence.</div>
+      </div>
+    </section>
+
+    <section class="composition-slide" id="harness-adapters">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">02 · How an agent is composed</div>
+          <h2>One harness crosses several integration surfaces</h2>
+        </div>
+        <p class="lede">Fullsend adapts source events, change systems, workflow hosts, and agent runtimes around the same harness contract.</p>
+      </div>
+
+      <div class="adapter-layout">
+        <div class="adapter-hub">
+          <div class="mental-label">stable center</div>
+          <h3>One harness</h3>
+          <p>The agent definition and lifecycle stay recognizable while the surrounding adapters change.</p>
+          <div class="harness-file"><span>trigger:</span> normalized event<br><span>role:</span> scoped authority<br><span>runtime:</span> selected backend<br><span>integration:</span> selected adapter</div>
+        </div>
+
+        <div class="adapter-bands">
+          <div class="adapter-band source">
+            <div><h3>Event and work-item sources</h3><p>What starts the run</p></div>
+            <div class="adapter-items"><span class="adapter-item">GitHub events</span><span class="adapter-item">GitLab events</span><span class="adapter-item">Jira work items</span></div>
+          </div>
+          <div class="adapter-band change">
+            <div><h3>Change trackers and forges</h3><p>Where PRs and MRs live</p></div>
+            <div class="adapter-items"><span class="adapter-item">GitHub pull requests</span><span class="adapter-item">GitLab merge requests</span></div>
+          </div>
+          <div class="adapter-band workflow">
+            <div><h3>Workflow hosts</h3><p>Where dispatch runs</p></div>
+            <div class="adapter-items"><span class="adapter-item">GitHub Actions</span><span class="adapter-item">GitLab CI</span></div>
+          </div>
+          <div class="adapter-band runtime">
+            <div><h3>Agent runtimes</h3><p>What performs the loop</p></div>
+            <div class="adapter-items"><span class="adapter-item">Claude Code</span><span class="adapter-item">pi</span><span class="adapter-item">Codex</span><span class="adapter-item">dummy tests</span></div>
+          </div>
+          <div class="adapter-footnote">Jira supplies work-item context. GitHub and GitLab supply the PR or MR change surface.</div>
         </div>
       </div>
     </section>
