@@ -2409,6 +2409,551 @@
   text-align: center;
 }
 
+/* 05 · Building and contributing safely */
+.safety-slide {
+  background:
+    radial-gradient(circle at 9% 12%, #172b25 0, transparent 23%),
+    radial-gradient(circle at 91% 88%, #18283d 0, transparent 24%),
+    var(--bg);
+}
+
+.ladder-visual {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 24px;
+  height: 470px;
+  margin-top: 24px;
+}
+
+.ladder-steps {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  padding: 0 14px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ladder-step {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 14px 13px 16px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--blue);
+  background: #111923d9;
+}
+
+.ladder-step:nth-child(2) { height: 59%; border-top-color: var(--purple); background: #181522; }
+.ladder-step:nth-child(3) { height: 76%; border-top-color: var(--orange); background: #211d17; }
+.ladder-step:nth-child(4) { height: 93%; border-top-color: var(--green); background: #15241b; }
+
+.ladder-step:first-child { height: 43%; }
+
+.ladder-step::before {
+  content: attr(data-level);
+  position: absolute;
+  top: -25px;
+  left: 0;
+  color: var(--dim);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.37em;
+}
+
+.ladder-step h3 {
+  color: var(--text);
+  font-size: 0.56em;
+  line-height: 1.15;
+}
+
+.ladder-step p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.38em;
+  line-height: 1.3;
+}
+
+.ladder-unlock {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #2a3540;
+  color: #c5d4df;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.35em;
+  line-height: 1.35;
+}
+
+.ladder-approval {
+  align-self: stretch;
+  padding: 20px 18px;
+  border-left: 3px solid var(--orange);
+  background: #211d17;
+}
+
+.ladder-approval h3 {
+  color: var(--text);
+  font-size: 0.58em;
+  line-height: 1.15;
+}
+
+.ladder-approval p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.4em;
+  line-height: 1.35;
+}
+
+.approval-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.approval-row {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 9px;
+  align-items: center;
+  padding: 9px 10px;
+  background: #171817;
+}
+
+.approval-row b {
+  color: var(--orange);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.48em;
+}
+
+.approval-row span {
+  color: #d6c7b6;
+  font-size: 0.39em;
+  line-height: 1.25;
+}
+
+.release-visual {
+  height: 480px;
+  margin-top: 20px;
+}
+
+.release-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  align-items: stretch;
+  height: 172px;
+}
+
+.release-event {
+  position: relative;
+  padding: 14px 12px;
+  border-top: 3px solid var(--blue);
+  background: #111923d9;
+}
+
+.release-event:nth-child(2) { border-top-color: var(--purple); background: #181522; }
+.release-event:nth-child(3) { border-top-color: var(--orange); background: #211d17; }
+.release-event:nth-child(4) { border-top-color: var(--green); background: #15241b; }
+.release-event:nth-child(5) { border-top-color: var(--blue); background: #14283a; }
+
+.release-event::after {
+  content: "";
+  position: absolute;
+  top: 33px;
+  right: -10px;
+  width: 10px;
+  height: 2px;
+  background: var(--border);
+}
+
+.release-event:last-child::after { display: none; }
+
+.release-event .release-num {
+  color: var(--dim);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.34em;
+}
+
+.release-event h3 {
+  margin-top: 7px;
+  color: var(--text);
+  font-size: 0.48em;
+  line-height: 1.15;
+}
+
+.release-event p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.35em;
+  line-height: 1.28;
+}
+
+.release-source-map {
+  display: grid;
+  grid-template-columns: 0.9fr 1.2fr 0.9fr;
+  gap: 14px;
+  align-items: stretch;
+  height: 270px;
+  margin-top: 24px;
+}
+
+.release-source,
+.release-resolve,
+.release-impact {
+  min-width: 0;
+  padding: 16px 15px;
+  border: 1px solid var(--border);
+  background: #111923d9;
+}
+
+.release-source { border-left: 3px solid var(--blue); }
+.release-resolve { border: 2px solid var(--purple); background: #181522; }
+.release-impact { border-left: 3px solid var(--green); background: #15241b; }
+
+.release-source h3,
+.release-resolve h3,
+.release-impact h3 {
+  color: var(--text);
+  font-size: 0.52em;
+  line-height: 1.15;
+}
+
+.release-source p,
+.release-resolve p,
+.release-impact p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.36em;
+  line-height: 1.3;
+}
+
+.release-code {
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid #314255;
+  background: #0c1219;
+  color: #b9d8f4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.34em;
+  line-height: 1.55;
+}
+
+.release-code span { color: var(--orange); }
+
+.release-resolve .resolve-row,
+.release-impact .impact-row {
+  margin-top: 10px;
+  padding: 9px 10px;
+  background: #211c2b;
+  color: #d8c6f5;
+  font-size: 0.37em;
+  line-height: 1.3;
+}
+
+.release-resolve .resolve-row:nth-child(3) { background: #211d17; color: #ffd0a2; }
+.release-resolve .resolve-row:nth-child(4) { background: #14283a; color: #b9d8f4; }
+
+.release-impact .impact-row { background: #102219; color: #b7e3bf; }
+.release-impact .impact-row:nth-child(3) { background: #14283a; color: #b9d8f4; }
+.release-impact .impact-row:nth-child(4) { background: #28191a; color: #ffb2ae; }
+
+.adr-visual {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 22px;
+  height: 470px;
+  margin-top: 24px;
+}
+
+.adr-flow {
+  display: grid;
+  grid-template-columns: 1fr 34px 1.1fr 34px 1fr;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.adr-node {
+  min-height: 180px;
+  padding: 18px 15px;
+  border: 1px solid var(--border);
+  background: #111923d9;
+}
+
+.adr-node.problem { border-top: 3px solid var(--blue); }
+.adr-node.decision { border: 2px solid var(--orange); background: #211d17; }
+.adr-node.architecture { border-top: 3px solid var(--green); background: #15241b; }
+
+.adr-node h3 {
+  color: var(--text);
+  font-size: 0.54em;
+  line-height: 1.15;
+}
+
+.adr-node p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.38em;
+  line-height: 1.32;
+}
+
+.adr-option-list {
+  display: grid;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.adr-option-list span {
+  padding: 7px 8px;
+  background: #14283a;
+  color: #b9d8f4;
+  font-size: 0.34em;
+}
+
+.adr-arrow,
+.adr-branch-arrow {
+  display: grid;
+  place-items: center;
+}
+
+.adr-arrow::before,
+.adr-branch-arrow::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+
+.adr-branch {
+  display: grid;
+  grid-template-columns: 1fr 34px 1fr;
+  gap: 8px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.adr-branch-node {
+  padding: 12px 13px;
+  border-left: 3px solid var(--purple);
+  background: #181522;
+}
+
+.adr-branch-node h3 { color: var(--text); font-size: 0.47em; }
+.adr-branch-node p { margin-top: 5px; color: var(--muted); font-size: 0.34em; line-height: 1.25; }
+
+.adr-rules {
+  padding: 20px 18px;
+  border-left: 3px solid var(--orange);
+  background: #211d17;
+}
+
+.adr-rules h3 { color: var(--text); font-size: 0.58em; }
+.adr-rules p { margin-top: 8px; color: var(--muted); font-size: 0.4em; line-height: 1.35; }
+
+.adr-rule-list {
+  display: grid;
+  gap: 11px;
+  margin-top: 23px;
+}
+
+.adr-rule {
+  padding: 10px 11px;
+  border-left: 3px solid var(--orange);
+  background: #171817;
+  color: #d6c7b6;
+  font-size: 0.38em;
+  line-height: 1.28;
+}
+
+.adr-rule:nth-child(2) { border-left-color: var(--red); background: #28191a; color: #ffb2ae; }
+.adr-rule:nth-child(3) { border-left-color: var(--green); background: #102219; color: #b7e3bf; }
+
+.test-map {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  height: 470px;
+  margin-top: 24px;
+}
+
+.test-repo-lane {
+  display: grid;
+  grid-template-columns: 125px repeat(4, 1fr);
+  gap: 10px;
+  align-items: stretch;
+}
+
+.test-repo-label {
+  display: flex;
+  align-items: center;
+  padding: 13px;
+  border-left: 3px solid var(--blue);
+  background: #14283a;
+  color: #b9d8f4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.42em;
+}
+
+.test-repo-lane:nth-child(2) .test-repo-label { border-left-color: var(--purple); background: #181522; color: #d8c6f5; }
+
+.test-cell {
+  min-width: 0;
+  padding: 14px 11px;
+  border-top: 3px solid var(--border);
+  background: #111923d9;
+}
+
+.test-cell:nth-child(2) { border-top-color: var(--blue); }
+.test-cell:nth-child(3) { border-top-color: var(--orange); }
+.test-cell:nth-child(4) { border-top-color: var(--green); }
+.test-cell:nth-child(5) { border-top-color: var(--purple); }
+
+.test-cell h3 { color: var(--text); font-size: 0.46em; line-height: 1.15; }
+.test-cell p { margin-top: 7px; color: var(--muted); font-size: 0.34em; line-height: 1.28; }
+
+.test-merge {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 14px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.test-merge-line { height: 2px; background: linear-gradient(90deg, transparent, var(--green), transparent); }
+.test-merge-core { padding: 15px; border: 2px solid var(--green); background: #15241b; text-align: center; }
+.test-merge-core strong { color: var(--green); font-size: 0.52em; }
+.test-merge-core small { display: block; margin-top: 6px; color: #b7e3bf; font-size: 0.35em; }
+
+.suite-visual {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 22px;
+  height: 470px;
+  margin-top: 24px;
+}
+
+.suite-flow {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+}
+
+.suite-step {
+  position: relative;
+  padding: 16px 17px 15px 22px;
+  border-left: 4px solid var(--blue);
+  background: #14283a;
+}
+
+.suite-step:nth-child(2) { border-left-color: var(--purple); background: #181522; }
+.suite-step:nth-child(3) { border-left-color: var(--orange); background: #211d17; }
+.suite-step:nth-child(4) { border-left-color: var(--green); background: #15241b; }
+
+.suite-step h3 { color: var(--text); font-size: 0.54em; }
+.suite-step p { margin-top: 5px; color: var(--muted); font-size: 0.37em; line-height: 1.28; }
+
+.suite-side {
+  align-self: stretch;
+  padding: 20px 18px;
+  border-left: 3px solid var(--orange);
+  background: #211d17;
+}
+
+.suite-side h3 { color: var(--text); font-size: 0.58em; line-height: 1.15; }
+.suite-side p { margin-top: 8px; color: var(--muted); font-size: 0.4em; line-height: 1.35; }
+
+.suite-side-list { display: grid; gap: 10px; margin-top: 23px; }
+.suite-side-item { padding: 10px 11px; background: #171817; color: #d6c7b6; font-size: 0.38em; line-height: 1.28; }
+.suite-side-item strong { display: block; color: var(--text); margin-bottom: 4px; }
+.suite-side-item.good { border-left: 3px solid var(--green); }
+.suite-side-item.warn { border-left: 3px solid var(--red); background: #28191a; color: #ffb2ae; }
+
+.eval-flow {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr 36px 1fr;
+  gap: 8px;
+  align-items: center;
+  height: 250px;
+}
+
+.eval-node {
+  min-height: 155px;
+  padding: 16px 13px;
+  border-top: 3px solid var(--blue);
+  background: #14283a;
+}
+
+.eval-node:nth-child(3) { border-top-color: var(--purple); background: #181522; }
+.eval-node:nth-child(5) { border-top-color: var(--green); background: #15241b; }
+.eval-node h3 { color: var(--text); font-size: 0.49em; line-height: 1.15; }
+.eval-node p { margin-top: 8px; color: var(--muted); font-size: 0.35em; line-height: 1.28; }
+
+.eval-arrow { display: grid; place-items: center; }
+.eval-arrow::before { content: ""; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+
+.eval-judges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.eval-judge { padding: 13px 14px; border-top: 2px solid var(--purple); background: #181522; }
+.eval-judge:nth-child(2) { border-top-color: var(--green); background: #15241b; }
+.eval-judge strong { display: block; color: var(--text); font-size: 0.45em; }
+.eval-judge small { display: block; margin-top: 5px; color: var(--muted); font-size: 0.35em; line-height: 1.28; }
+
+.eval-threshold {
+  margin-top: 18px;
+  padding: 13px 15px;
+  border-left: 3px solid var(--orange);
+  background: #211d17;
+  color: #ffd0a2;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.38em;
+  line-height: 1.35;
+}
+
+.devloop-visual {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  height: 470px;
+  margin-top: 24px;
+}
+
+.devloop-cycle {
+  display: grid;
+  grid-template-columns: 1fr 34px 1fr;
+  grid-template-rows: 1fr 34px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--border);
+  background: #0d131b99;
+}
+
+.devloop-node { padding: 17px 15px; border-top: 3px solid var(--blue); background: #14283a; }
+.devloop-node:nth-child(3) { border-top-color: var(--purple); background: #181522; }
+.devloop-node:nth-child(5) { border-top-color: var(--green); background: #15241b; }
+.devloop-node:nth-child(7) { border-top-color: var(--orange); background: #211d17; }
+.devloop-node h3 { color: var(--text); font-size: 0.5em; }
+.devloop-node p { margin-top: 6px; color: var(--muted); font-size: 0.35em; line-height: 1.28; }
+
+.devloop-arrow { display: grid; place-items: center; }
+.devloop-arrow::before { content: ""; width: 100%; height: 2px; background: var(--border); }
+.devloop-arrow.down::before { width: 2px; height: 100%; }
+
+.devloop-center { grid-column: 2; grid-row: 2; color: var(--green); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.38em; text-align: center; }
+
+.devloop-tips { padding: 20px 18px; border-left: 3px solid var(--green); background: #15241b; }
+.devloop-tips h3 { color: var(--text); font-size: 0.58em; }
+.devloop-tips p { margin-top: 8px; color: var(--muted); font-size: 0.4em; line-height: 1.35; }
+.dev-tip-list { display: grid; gap: 9px; margin-top: 21px; }
+.dev-tip { padding: 9px 10px; border-left: 3px solid var(--blue); background: #14283a; color: #b9d8f4; font-size: 0.36em; line-height: 1.3; }
+.dev-tip:nth-child(2) { border-left-color: var(--purple); background: #181522; color: #d8c6f5; }
+.dev-tip:nth-child(3) { border-left-color: var(--orange); background: #211d17; color: #ffd0a2; }
+.dev-tip:nth-child(4) { border-left-color: var(--red); background: #28191a; color: #ffb2ae; }
+.devloop-takeaway { margin-top: 17px; padding: 13px 14px; border-top: 2px solid var(--green); color: #b7e3bf; font-size: 0.42em; line-height: 1.3; }
+
 .reveal .slide-number {
   right: 22px;
   bottom: 14px;
@@ -3143,6 +3688,318 @@
         </div>
 
         <div class="role-takeaway">Custom agent behavior grows laterally. Shared authority grows only through an explicit, reviewable role decision.</div>
+      </div>
+    </section>
+
+    <section class="safety-slide" id="contributor-ladder">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">05 · Building and contributing safely</div>
+          <h2>Contributor permissions grow with evidence</h2>
+        </div>
+        <p class="lede">Fullsend turns contribution history into a measured path toward wider repository authority.</p>
+      </div>
+
+      <div class="ladder-visual" aria-label="Contributor ladder from vouched to maintainer">
+        <div class="ladder-steps">
+          <div class="ladder-step" data-level="01">
+            <h3>Vouched</h3>
+            <p>Submit code, docs, and tests from your own fork.</p>
+            <div class="ladder-unlock">PRs pass the vouch gate</div>
+          </div>
+          <div class="ladder-step" data-level="02">
+            <h3>Triage</h3>
+            <p>Shape issue state and trigger observation agents.</p>
+            <div class="ladder-unlock">labels · e2e CI</div>
+          </div>
+          <div class="ladder-step" data-level="03">
+            <h3>Write</h3>
+            <p>Change non-protected branches and run mutation agents.</p>
+            <div class="ladder-unlock">/fs-code · /fs-fix</div>
+          </div>
+          <div class="ladder-step" data-level="04">
+            <h3>Maintainer</h3>
+            <p>Approve, authorize CI, and merge under CODEOWNERS.</p>
+            <div class="ladder-unlock">merge · approval · policy</div>
+          </div>
+        </div>
+
+        <div class="ladder-approval">
+          <h3>Advancement is earned</h3>
+          <p>Each step combines contribution history with a deliberate approval bar.</p>
+          <div class="approval-list">
+            <div class="approval-row"><b>1×</b><span>Maintainer for Vouched</span></div>
+            <div class="approval-row"><b>1×</b><span>Maintainer for Triage</span></div>
+            <div class="approval-row"><b>2×</b><span>Maintainers for Write</span></div>
+            <div class="approval-row"><b>∑</b><span>Maintainer consensus</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety-slide" id="per-repo-resolution">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">05 · Building and contributing safely</div>
+          <h2>From merge to a per-repo run</h2>
+        </div>
+        <p class="lede">A merge changes source. A release changes stable references. A workflow run selects what users actually execute.</p>
+      </div>
+
+      <div class="release-visual" aria-label="Fullsend release sequence and non-vendored per-repo source resolution">
+        <div class="release-timeline">
+          <div class="release-event"><div class="release-num">01 · source</div><h3>Merge to main</h3><p>Moving consumers can observe the new commit on a later run.</p></div>
+          <div class="release-event"><div class="release-num">02 · release</div><h3>Tag vX.Y.Z</h3><p>Fullsend starts the release workflow and agents gate.</p></div>
+          <div class="release-event"><div class="release-num">03 · gate</div><h3>Validate agents</h3><p>Functional tests run against the Fullsend release ref.</p></div>
+          <div class="release-event"><div class="release-num">04 · publish</div><h3>Move Fullsend v0</h3><p>GoReleaser publishes the CLI; stable v0 advances.</p></div>
+          <div class="release-event"><div class="release-num">05 · sync</div><h3>Tag agents</h3><p>The gate-validated agents SHA receives vX.Y.Z and v0.</p></div>
+        </div>
+
+        <div class="release-source-map">
+          <div class="release-source">
+            <h3>Target repository</h3>
+            <p>The per-repo caller and effective config select the run.</p>
+            <div class="release-code"><span>.github/workflows/</span>fullsend.yaml<br><span>.fullsend/</span>config.yaml<br><span>.fullsend/</span>config.base.yaml</div>
+          </div>
+          <div class="release-resolve">
+            <h3>Non-vendored resolution</h3>
+            <p>Each input can point at a different source revision.</p>
+            <div class="resolve-row"><b>workflow @ref</b><br>reusable workflow code</div>
+            <div class="resolve-row"><b>fullsend_version</b><br>CLI binary, fallback build from ref</div>
+            <div class="resolve-row"><b>agent source</b><br>local path or remote SHA plus #sha256</div>
+          </div>
+          <div class="release-impact">
+            <h3>Impact on users</h3>
+            <div class="impact-row"><b>@main</b><br>moving development behavior</div>
+            <div class="impact-row"><b>@v0</b><br>latest stable on the next run</div>
+            <div class="impact-row"><b>@vX.Y.Z or SHA</b><br>unchanged until the repo ref moves</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety-slide" id="adr-lifecycle">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">05 · Building and contributing safely</div>
+          <h2>Architecture decisions have a durable path</h2>
+        </div>
+        <p class="lede">Problem documents explore the space. ADRs record the decision. Living architecture carries the current truth.</p>
+      </div>
+
+      <div class="adr-visual" aria-label="Architecture decision lifecycle from problem exploration to implementation">
+        <div>
+          <div class="adr-flow">
+            <div class="adr-node problem">
+              <h3>Problem space</h3>
+              <p>Describe the need before selecting an implementation.</p>
+              <div class="adr-option-list"><span>Option A</span><span>Option B</span><span>trade-offs</span></div>
+            </div>
+            <div class="adr-arrow" aria-hidden="true"></div>
+            <div class="adr-node decision">
+              <h3>Accepted ADR</h3>
+              <p>Freeze the context, decision, and consequences as a point-in-time record.</p>
+              <div class="adr-option-list"><span>status: Accepted</span><span>review at merge</span></div>
+            </div>
+            <div class="adr-arrow" aria-hidden="true"></div>
+            <div class="adr-node architecture">
+              <h3>Living architecture</h3>
+              <p>Update the current system description so contributors can work from one truth.</p>
+              <div class="adr-option-list"><span>architecture.md</span><span>related docs</span></div>
+            </div>
+          </div>
+          <div class="adr-branch">
+            <div class="adr-branch-node"><h3>Human contribution</h3><p>ADR and implementation may share a PR when the decision is settled.</p></div>
+            <div class="adr-branch-arrow" aria-hidden="true"></div>
+            <div class="adr-branch-node"><h3>Agent contribution</h3><p>Keep the ADR and implementation in separate reviewable PRs.</p></div>
+          </div>
+        </div>
+
+        <div class="adr-rules">
+          <h3>When the decision changes</h3>
+          <p>Preserve the history and make the new decision explicit.</p>
+          <div class="adr-rule-list">
+            <div class="adr-rule">Accepted ADRs are not substantially rewritten.</div>
+            <div class="adr-rule">A changed decision gets a new ADR that supersedes the old one.</div>
+            <div class="adr-rule">Implementation follows the accepted decision, not the other way around.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety-slide" id="test-landscape">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">05 · Building and contributing safely</div>
+          <h2>Fullsend and agents use different evidence lanes</h2>
+        </div>
+        <p class="lede">The repositories meet at release time, but each suite answers a different question.</p>
+      </div>
+
+      <div class="test-map" aria-label="Testing landscape across the fullsend and agents repositories">
+        <div class="test-repo-lane">
+          <div class="test-repo-label">fullsend</div>
+          <div class="test-cell"><h3>Go tests</h3><p>Pure functions, interfaces, and package behavior.</p></div>
+          <div class="test-cell"><h3>Behaviour</h3><p>Dispatch, harness, sandbox, and SCM state.</p></div>
+          <div class="test-cell"><h3>Admin e2e</h3><p>Installation, mint, and real pool infrastructure.</p></div>
+          <div class="test-cell"><h3>Functional</h3><p>Full agent pipeline against ephemeral fixtures.</p></div>
+        </div>
+        <div class="test-repo-lane">
+          <div class="test-repo-label">agents</div>
+          <div class="test-cell"><h3>Script tests</h3><p>Pre-script and post-script contracts.</p></div>
+          <div class="test-cell"><h3>Agent fixtures</h3><p>Known cases and expected outcomes.</p></div>
+          <div class="test-cell"><h3>Functional evals</h3><p>Judges, scores, and behavioral thresholds.</p></div>
+          <div class="test-cell"><h3>Release gate</h3><p>Validated agents SHA becomes the tag.</p></div>
+        </div>
+        <div class="test-merge">
+          <div class="test-merge-line"></div>
+          <div class="test-merge-core"><strong>release decision</strong><small>the tested source becomes a selectable reference</small></div>
+          <div class="test-merge-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety-slide" id="behaviour-tests">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">05 · Building and contributing safely</div>
+          <h2>Behaviour tests remove inference</h2>
+        </div>
+        <p class="lede">They exercise deterministic platform behavior while keeping the model layer out of the assertion.</p>
+      </div>
+
+      <div class="suite-visual" aria-label="Behaviour test pipeline with the dummy runtime">
+        <div class="suite-flow">
+          <div class="suite-step"><h3>Gherkin scenario</h3><p>User-visible event and expected state.</p></div>
+          <div class="suite-step"><h3>Dispatch and workflow</h3><p>Routing, harness selection, and workflow execution.</p></div>
+          <div class="suite-step"><h3>Dummy runtime</h3><p>Scripted operations replace inference with deterministic behavior.</p></div>
+          <div class="suite-step"><h3>Forge state</h3><p>Real GitHub or GitLab and CI drivers verify the result.</p></div>
+        </div>
+        <div class="suite-side">
+          <h3>What this proves</h3>
+          <p>The control plane enforces its contract without depending on model variance.</p>
+          <div class="suite-side-list">
+            <div class="suite-side-item good"><strong>Good fit</strong>dispatch, policy, branches, artifacts, and SCM mutations</div>
+            <div class="suite-side-item warn"><strong>Not the claim</strong>that an agent prompt produces a high-quality answer</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety-slide" id="e2e-tests">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">05 · Building and contributing safely</div>
+          <h2>E2E tests exercise the installed system</h2>
+        </div>
+        <p class="lede">The test reaches across installation, identity, minting, workflows, and a real repository.</p>
+      </div>
+
+      <div class="suite-visual" aria-label="End-to-end test path through pool orgs and the mint">
+        <div class="suite-flow">
+          <div class="suite-step"><h3>Test actor</h3><p>Write, triage, or outsider permissions model the caller.</p></div>
+          <div class="suite-step"><h3>Pool organization</h3><p>An isolated repository is acquired for the test.</p></div>
+          <div class="suite-step"><h3>OIDC and mint</h3><p>Short-lived role-scoped authority is issued for the run.</p></div>
+          <div class="suite-step"><h3>Installed workflow</h3><p>GitHub Actions performs the operation and exposes the final state.</p></div>
+        </div>
+        <div class="suite-side">
+          <h3>Why it costs more</h3>
+          <p>E2E tests verify the seams that unit and behaviour tests intentionally abstract away.</p>
+          <div class="suite-side-list">
+            <div class="suite-side-item good"><strong>Real infrastructure</strong>pool orgs, mint, Actions, and cleanup</div>
+            <div class="suite-side-item"><strong>Operational evidence</strong>authorization and installation behavior match production shape</div>
+            <div class="suite-side-item warn"><strong>Failure signal</strong>infrastructure races need attribution before code changes</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety-slide" id="functional-tests">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">05 · Building and contributing safely</div>
+          <h2>Functional tests observe the full agent pipeline</h2>
+        </div>
+        <p class="lede">The agent runs against an ephemeral fixture, then judges inspect both quality and side effects.</p>
+      </div>
+
+      <div class="suite-visual" aria-label="Functional test pipeline from fixture setup to scoring">
+        <div class="suite-flow">
+          <div class="suite-step"><h3>Before each case</h3><p>Create the ephemeral repository and fixture.</p></div>
+          <div class="suite-step"><h3>Fullsend run</h3><p>Pre-script, sandboxed agent execution, and post-script.</p></div>
+          <div class="suite-step"><h3>After each case</h3><p>Capture fixture state and remove the temporary repository.</p></div>
+          <div class="suite-step"><h3>Threshold gate</h3><p>Compare scores, side effects, turns, and cost against the case contract.</p></div>
+        </div>
+        <div class="suite-side">
+          <h3>Evidence leaves the run</h3>
+          <p>Functional tests make agent behavior inspectable without treating a transcript as the only result.</p>
+          <div class="suite-side-list">
+            <div class="suite-side-item"><strong>Fixture state</strong>labels, comments, PR state, or other deterministic effects</div>
+            <div class="suite-side-item"><strong>Metrics</strong>turn count, cost, and run measurements</div>
+            <div class="suite-side-item good"><strong>Release use</strong>the suite gates the source SHA that receives the release tag</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety-slide" id="agent-evals">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">05 · Building and contributing safely</div>
+          <h2>Agent evals score quality and regression</h2>
+        </div>
+        <p class="lede">Curated cases turn prompt and model changes into a measurable comparison.</p>
+      </div>
+
+      <div class="release-visual" aria-label="Agent evaluation flow with deterministic and LLM judges">
+        <div class="eval-flow">
+          <div class="eval-node"><h3>Case fixture</h3><p>Input, repository, annotations, and expected behavior.</p></div>
+          <div class="eval-arrow" aria-hidden="true"></div>
+          <div class="eval-node"><h3>Agent run</h3><p>The same agent pipeline produces an observable result.</p></div>
+          <div class="eval-arrow" aria-hidden="true"></div>
+          <div class="eval-node"><h3>Score</h3><p>Judges compare quality, state, efficiency, and cost.</p></div>
+        </div>
+        <div class="eval-judges">
+          <div class="eval-judge"><strong>LLM judge</strong><small>Rates the work against the case rubric and a minimum mean.</small></div>
+          <div class="eval-judge"><strong>Deterministic checks</strong><small>Verify concrete fixture properties and minimum pass rate.</small></div>
+        </div>
+        <div class="eval-threshold">max_turns · max_cost_usd · min_mean · min_pass_rate</div>
+      </div>
+    </section>
+
+    <section class="safety-slide" id="dev-loop">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">05 · Building and contributing safely</div>
+          <h2>The development loop keeps evidence beside the change</h2>
+        </div>
+        <p class="lede">A green PR should establish the contract for the slice it changes and exercise that contract before merge.</p>
+      </div>
+
+      <div class="devloop-visual" aria-label="Development loop with practical Fullsend contributor tips">
+        <div class="devloop-cycle">
+          <div class="devloop-node"><h3>Slice the change</h3><p>Keep the implementation, config, and user-visible behavior together.</p></div>
+          <div class="devloop-arrow" aria-hidden="true"></div>
+          <div class="devloop-node"><h3>Deploy exact source</h3><p>Use `go run` from the checkout and `--vendor` for unreleased workflow testing.</p></div>
+          <div class="devloop-arrow down" aria-hidden="true"></div>
+          <div class="devloop-center">green PR</div>
+          <div class="devloop-arrow down" aria-hidden="true"></div>
+          <div class="devloop-node"><h3>Run matching evidence</h3><p>Add behaviour or e2e coverage with the functionality it protects.</p></div>
+          <div class="devloop-arrow" aria-hidden="true"></div>
+          <div class="devloop-node"><h3>Merge the proven slice</h3><p>Keep refs, docs, and tests aligned with the change.</p></div>
+        </div>
+
+        <div class="devloop-tips">
+          <h3>Practical shortcuts</h3>
+          <p>Make the path from a local change to a trustworthy run short and repeatable.</p>
+          <div class="dev-tip-list">
+            <div class="dev-tip">Run `go run ./cmd/fullsend ...` so the CLI matches the checkout.</div>
+            <div class="dev-tip">Use `--vendor --fullsend-source "$PWD"` to test unreleased workflows in a real repo.</div>
+            <div class="dev-tip">Keep `uses: @ref` and `fullsend_version` on the same source revision.</div>
+            <div class="dev-tip">Fix the cause of a timeout or race instead of weakening the suite.</div>
+          </div>
+          <div class="devloop-takeaway">Green means the declared contract passed its evidence lane. It does not mean every behavior is proven.</div>
+        </div>
       </div>
     </section>
 
