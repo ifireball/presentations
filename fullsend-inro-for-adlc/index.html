@@ -1339,6 +1339,451 @@
   text-align: right;
 }
 
+.trust-slide {
+  background:
+    radial-gradient(circle at 8% 14%, #20263a 0, transparent 25%),
+    radial-gradient(circle at 91% 84%, #172b25 0, transparent 25%),
+    var(--bg);
+}
+
+.trust-visual {
+  height: 490px;
+  margin-top: 26px;
+}
+
+.trust-chain {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  height: 100%;
+  align-items: center;
+}
+
+.trust-node {
+  position: relative;
+  min-height: 300px;
+  padding: 26px 22px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #101821d9;
+}
+
+.trust-node::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -19px;
+  width: 18px;
+  height: 2px;
+  background: var(--border);
+}
+
+.trust-node:last-child::after { display: none; }
+.trust-node.identity { border-top: 4px solid var(--blue); }
+.trust-node.content { border-top: 4px solid var(--orange); background: #211d17; }
+.trust-node.execution { border-top: 4px solid var(--green); background: #111e18; }
+
+.trust-node .node-number {
+  color: var(--dim);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.48em;
+  letter-spacing: 0.1em;
+}
+
+.trust-node h3 {
+  margin-top: 18px;
+  color: var(--text);
+  font-size: 0.92em;
+  line-height: 1.08;
+}
+
+.trust-node p {
+  margin-top: 11px;
+  color: var(--muted);
+  font-size: 0.48em;
+  line-height: 1.4;
+}
+
+.trust-question {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 23px;
+  padding-top: 15px;
+  border-top: 1px solid #2b3948;
+  color: var(--text);
+  font-size: 0.44em;
+  line-height: 1.35;
+}
+
+.identity .trust-question { color: #acd2f7; }
+.content .trust-question { color: #ffd0a2; }
+.execution .trust-question { color: #b7e3bf; }
+
+.credential-map {
+  display: grid;
+  grid-template-columns: 1.42fr 70px 0.9fr;
+  gap: 20px;
+  height: 100%;
+  align-items: center;
+}
+
+.delivery-rail {
+  display: grid;
+  gap: 10px;
+}
+
+.delivery-band {
+  display: grid;
+  grid-template-columns: 158px 1fr;
+  gap: 15px;
+  align-items: center;
+  min-height: 83px;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue);
+  border-radius: 11px;
+  background: #111923d9;
+}
+
+.delivery-band.provider { border-left-color: var(--purple); background: #181522; }
+.delivery-band.host-file { border-left-color: var(--orange); background: #211d17; }
+.delivery-band.service { border-left-color: var(--green); background: #15241b; }
+
+.delivery-band strong {
+  color: var(--text);
+  font-size: 0.52em;
+  line-height: 1.18;
+}
+
+.delivery-band p {
+  color: var(--muted);
+  font-size: 0.4em;
+  line-height: 1.3;
+}
+
+.delivery-link {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--dim);
+}
+
+.delivery-link::before {
+  content: "";
+  width: 2px;
+  height: 73%;
+  background: linear-gradient(var(--blue), var(--purple), var(--orange), var(--green));
+}
+
+.runtime-core {
+  position: relative;
+  min-height: 355px;
+  padding: 28px 21px 22px;
+  border: 2px solid var(--purple);
+  border-radius: 19px;
+  background: linear-gradient(180deg, #211c2b, #111923 84%);
+  box-shadow: 0 22px 75px #00000038;
+}
+
+.runtime-core h3 {
+  margin-top: 12px;
+  color: var(--text);
+  font-size: 0.92em;
+  line-height: 1.05;
+}
+
+.runtime-core > p {
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 0.43em;
+  line-height: 1.35;
+}
+
+.runtime-outputs {
+  display: grid;
+  gap: 9px;
+  margin-top: 28px;
+}
+
+.runtime-output {
+  padding: 11px 12px;
+  border-left: 3px solid var(--purple);
+  background: #1c1824;
+}
+
+.runtime-output strong {
+  display: block;
+  color: #d8c6f5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.42em;
+}
+
+.runtime-output small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.37em;
+  line-height: 1.25;
+}
+
+.credential-note {
+  margin-top: 13px;
+  color: #b7d5ee;
+  font-size: 0.43em;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.provenance-visual {
+  height: 490px;
+  margin-top: 23px;
+}
+
+.provenance-top {
+  display: grid;
+  grid-template-columns: 1fr 48px 1.18fr 48px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.provenance-node {
+  min-height: 155px;
+  padding: 20px 17px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: #111923d9;
+}
+
+.provenance-node.shim { border-top: 3px solid var(--orange); background: #211d17; }
+.provenance-node.host { border: 2px solid var(--green); background: #15241b; }
+.provenance-node.claims { border-top: 3px solid var(--blue); background: #14283a; }
+
+.provenance-node h3 {
+  color: var(--text);
+  font-size: 0.59em;
+  line-height: 1.16;
+}
+
+.provenance-node p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.39em;
+  line-height: 1.35;
+}
+
+.provenance-code {
+  margin-top: 11px;
+  color: #b9d9f4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.36em;
+  line-height: 1.45;
+}
+
+.provenance-code span { color: var(--green); }
+
+.provenance-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--dim);
+  font-size: 0.4em;
+  text-align: center;
+}
+
+.provenance-arrow::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+
+.provenance-branches {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 28px 97px 0;
+  padding-top: 28px;
+}
+
+.provenance-branches::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 28px;
+  background: var(--blue);
+  transform: translateX(-50%);
+}
+
+.provenance-branch {
+  position: relative;
+  min-height: 153px;
+  padding: 20px 19px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--purple);
+  border-radius: 12px;
+  background: #181522;
+}
+
+.provenance-branch.inference { border-top-color: var(--orange); background: #211d17; }
+
+.provenance-branch::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 2px;
+  height: 28px;
+  background: var(--blue);
+}
+
+.provenance-branch h3 {
+  color: var(--text);
+  font-size: 0.6em;
+  line-height: 1.15;
+}
+
+.provenance-branch p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.4em;
+  line-height: 1.35;
+}
+
+.provenance-branch strong {
+  display: block;
+  margin-top: 14px;
+  color: #d8c6f5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.4em;
+}
+
+.inference strong { color: #ffd0a2; }
+
+.blocked-path {
+  margin: 25px auto 0;
+  max-width: 690px;
+  padding: 12px 15px;
+  border: 1px dashed var(--red);
+  border-radius: 9px;
+  background: #28191a;
+  color: #ffb2ae;
+  font-size: 0.42em;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.authority-visual {
+  height: 475px;
+  margin-top: 26px;
+}
+
+.authority-flow {
+  display: grid;
+  grid-template-columns: 0.92fr 42px 0.95fr 42px 1.22fr 42px 0.95fr 42px 1.05fr;
+  gap: 9px;
+  align-items: center;
+  height: 300px;
+}
+
+.authority-step {
+  min-height: 188px;
+  padding: 18px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #111923d9;
+}
+
+.authority-step.policy { border-top: 3px solid var(--blue); background: #14283a; }
+.authority-step.mint { border-top: 3px solid var(--purple); background: #181522; }
+.authority-step.runtime { border-top: 3px solid var(--orange); background: #211d17; }
+.authority-step.repo { border: 2px solid var(--green); background: #15241b; }
+
+.authority-step h3 {
+  color: var(--text);
+  font-size: 0.56em;
+  line-height: 1.16;
+}
+
+.authority-step p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.37em;
+  line-height: 1.35;
+}
+
+.authority-arrow {
+  display: grid;
+  place-items: center;
+}
+
+.authority-arrow::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+
+.token-envelope {
+  display: grid;
+  gap: 5px;
+  margin-top: 13px;
+  padding: 10px;
+  border: 1px solid #51436c;
+  border-radius: 7px;
+  background: #211c2b;
+  color: #d8c6f5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.34em;
+  line-height: 1.25;
+}
+
+.token-envelope span { color: var(--muted); }
+
+.authority-checks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.authority-check {
+  padding: 12px 14px;
+  border-top: 2px solid var(--green);
+  background: #15241b;
+}
+
+.authority-check:nth-child(2) { border-top-color: var(--orange); background: #211d17; }
+.authority-check:nth-child(3) { border-top-color: var(--blue); background: #14283a; }
+
+.authority-check strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.43em;
+  line-height: 1.2;
+}
+
+.authority-check small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.36em;
+  line-height: 1.3;
+}
+
+.authority-takeaway {
+  margin-top: 18px;
+  padding: 14px 17px;
+  border-left: 3px solid var(--green);
+  background: #102219;
+  color: #b7e3bf;
+  font-size: 0.46em;
+  line-height: 1.35;
+  text-align: center;
+}
+
 .reveal .slide-number {
   right: 22px;
   bottom: 14px;
@@ -1366,7 +1811,18 @@
   .coordination-layout,
   .harness-hub-layout,
   .composition-flow,
-  .adapter-layout { grid-template-columns: 1fr; height: auto; }
+  .adapter-layout,
+  .trust-chain,
+  .credential-map,
+  .provenance-top,
+  .authority-flow { grid-template-columns: 1fr; height: auto; }
+  .trust-node::after,
+  .provenance-arrow::before,
+  .authority-arrow::before { display: none; }
+  .delivery-link { display: none; }
+  .provenance-branches { margin: 20px 0 0; }
+  .authority-flow { gap: 10px; }
+  .authority-checks { grid-template-columns: 1fr; }
   .boundary-stage { height: 430px; }
   .coordination-layout,
   .harness-hub-layout,
@@ -1772,6 +2228,123 @@
         </div>
       </div>
     </section>
+    <section class="trust-slide" id="trust-model">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">03 · Trust boundaries in execution</div>
+          <h2>Trust is a chain of separate decisions</h2>
+        </div>
+        <p class="lede">An authenticated agent can still process hostile content. Safe execution comes from deciding identity, input trust, and authority separately.</p>
+      </div>
+
+      <div class="trust-visual trust-chain" aria-label="Three separate trust questions">
+        <div class="trust-node identity">
+          <div class="node-number">01 · IDENTITY</div>
+          <h3>Who is acting?</h3>
+          <p>Agent roles and GitHub App installations make actions attributable and allow permissions to be scoped by role.</p>
+          <div class="trust-question">Verify the caller and the workflow that requested access.</div>
+        </div>
+        <div class="trust-node content">
+          <div class="node-number">02 · CONTENT</div>
+          <h3>What did it read?</h3>
+          <p>Issues, comments, pull requests, and agent output remain untrusted input, even when they came from a known repository.</p>
+          <div class="trust-question">Treat content as data to sanitize, not instructions to trust.</div>
+        </div>
+        <div class="trust-node execution">
+          <div class="node-number">03 · EXECUTION</div>
+          <h3>What can it do?</h3>
+          <p>Sandbox policy, credential scope, network rules, and repository gates constrain the blast radius of a run.</p>
+          <div class="trust-question">Limit authority before the runtime starts acting.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-slide" id="credential-delivery">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">03 · Trust boundaries in execution</div>
+          <h2>Credential delivery depends on the service</h2>
+        </div>
+        <p class="lede">Fullsend uses different boundaries for different integrations. Some runs have no runtime credential; others receive a scoped token or a real credential file.</p>
+      </div>
+
+      <div class="trust-visual credential-map" aria-label="Credential delivery paths into the agent runtime">
+        <div class="delivery-rail">
+          <div class="delivery-band"><strong>Prefetch + post-process</strong><p>Inputs arrive before the run. A host-side step applies the result afterward.</p></div>
+          <div class="delivery-band provider"><strong>OpenShell provider</strong><p>The runtime carries an opaque placeholder. The gateway resolves the credential at the allowed endpoint.</p></div>
+          <div class="delivery-band host-file"><strong>Host file</strong><p>File-based auth can enter the sandbox. Network policy becomes the hard security boundary.</p></div>
+          <div class="delivery-band service"><strong>Host-side service</strong><p>A scoped API mediates operations the provider model cannot express.</p></div>
+        </div>
+        <div class="delivery-link" aria-hidden="true"></div>
+        <div class="runtime-core">
+          <div class="mental-label">the boundary moves with the integration</div>
+          <h3>Agent runtime</h3>
+          <p>One runtime, several credential shapes.</p>
+          <div class="runtime-outputs">
+            <div class="runtime-output"><strong>GH_TOKEN</strong><small>minted GitHub App token, scoped by role and repository</small></div>
+            <div class="runtime-output"><strong>model access</strong><small>provider placeholder, WIF-backed access, or a host-delivered file</small></div>
+            <div class="runtime-output"><strong>repository workspace</strong><small>filesystem and network policy limit what the run can reach</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="credential-note">The question is not “are there credentials?” It is “which credential reaches which boundary, for which operation?”</div>
+    </section>
+
+    <section class="trust-slide" id="workflow-provenance">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">03 · Trust boundaries in execution</div>
+          <h2>Workflow provenance gates credential exchange</h2>
+        </div>
+        <p class="lede">A consumer repository can trigger Fullsend without becoming a trusted minting workflow host.</p>
+      </div>
+
+      <div class="provenance-visual" aria-label="Workflow provenance gates mint and inference access">
+        <div class="provenance-top">
+          <div class="provenance-node shim"><h3>Consumer repository</h3><p>Thin shim forwards event context and invokes the reusable workflow.</p><div class="provenance-code"><span>event:</span> issue / PR / comment<br><span>role:</span> caller</div></div>
+          <div class="provenance-arrow" aria-hidden="true"></div>
+          <div class="provenance-node host"><h3>Allowed workflow host</h3><p>Upstream Fullsend or an explicitly trusted workflow repository supplies the credential-bearing code.</p><div class="provenance-code"><span>job_workflow_ref:</span><br>fullsend-ai/fullsend/...</div></div>
+          <div class="provenance-arrow" aria-hidden="true"></div>
+          <div class="provenance-node claims"><h3>GitHub OIDC claims</h3><p>The exchange carries workflow provenance, repository identity, audience, and expiry.</p><div class="provenance-code"><span>repository</span> · <span>owner</span> · <span>aud</span> · <span>exp</span></div></div>
+        </div>
+        <div class="provenance-branches">
+          <div class="provenance-branch"><h3>Mint WIF</h3><p>OIDC is exchanged for a role-scoped GitHub App installation token.</p><strong>GH_TOKEN · PUSH_TOKEN · REVIEW_TOKEN</strong></div>
+          <div class="provenance-branch inference"><h3>Inference WIF</h3><p>The same job identity follows a separate provider path for Vertex or OpenAI access.</p><strong>ADC file · run-scoped provider · L7 egress</strong></div>
+        </div>
+        <div class="blocked-path">arbitrary consumer workflow → mint: blocked · caller enrollment ≠ workflow-host trust</div>
+      </div>
+    </section>
+
+    <section class="trust-slide" id="bounded-authority">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">03 · Trust boundaries in execution</div>
+          <h2>Minted authority is bounded twice</h2>
+        </div>
+        <p class="lede">WIF authorizes a workflow to request a token. The mint limits the token, and the repository still decides whether the result can merge.</p>
+      </div>
+
+      <div class="authority-visual" aria-label="Bounded authority from OIDC claims to repository merge gates">
+        <div class="authority-flow">
+          <div class="authority-step policy"><h3>OIDC claims</h3><p>Verified issuer, audience, repository, and workflow provenance.</p></div>
+          <div class="authority-arrow" aria-hidden="true"></div>
+          <div class="authority-step mint"><h3>Token mint</h3><p>Checks caller, role, level, installation, and requested repositories.</p></div>
+          <div class="authority-arrow" aria-hidden="true"></div>
+          <div class="authority-step"><h3>Capability envelope</h3><div class="token-envelope"><div><span>role:</span> coder</div><div><span>level:</span> read</div><div><span>repos:</span> org/repository</div><div><span>perms:</span> contents:read</div><div><span>expires:</span> short-lived</div></div></div>
+          <div class="authority-arrow" aria-hidden="true"></div>
+          <div class="authority-step runtime"><h3>Runtime action</h3><p>Read, edit, test, comment, or push within the granted capability.</p></div>
+          <div class="authority-arrow" aria-hidden="true"></div>
+          <div class="authority-step repo"><h3>Repository gate</h3><p>Required checks, CODEOWNERS, and branch protection decide whether state advances.</p></div>
+        </div>
+        <div class="authority-checks">
+          <div class="authority-check"><strong>Role and level</strong><small>coder/read is narrower than coder/write</small></div>
+          <div class="authority-check"><strong>Repository scope</strong><small>per-repo callers request their own repository</small></div>
+          <div class="authority-check"><strong>Final merge decision</strong><small>a valid token does not bypass repository policy</small></div>
+        </div>
+        <div class="authority-takeaway">A successful exchange grants a capability. It does not grant a trusted outcome.</div>
+      </div>
+    </section>
+
   </div>
 </div>
 
