@@ -1339,6 +1339,631 @@
   text-align: right;
 }
 
+.extension-slide {
+  background:
+    radial-gradient(circle at 10% 10%, #14283d 0, transparent 24%),
+    radial-gradient(circle at 92% 86%, #241b31 0, transparent 23%),
+    var(--bg);
+}
+
+.dispatch-visual {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 12px;
+  height: 475px;
+  margin-top: 24px;
+}
+
+.dispatch-flow {
+  display: grid;
+  grid-template-columns: 1.12fr 30px 0.92fr 30px 1.42fr 30px 1fr;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.dispatch-sources,
+.dispatch-contract,
+.dispatch-core,
+.dispatch-run {
+  min-width: 0;
+  min-height: 304px;
+  padding: 20px 18px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: #101821d9;
+}
+
+.dispatch-sources { border-top: 3px solid var(--blue); }
+.dispatch-contract { border-top: 3px solid var(--orange); background: #211d17; }
+.dispatch-core { border: 2px solid var(--green); background: #111e18; }
+.dispatch-run { border-top: 3px solid var(--purple); background: #181522; }
+
+.dispatch-sources h3,
+.dispatch-contract h3,
+.dispatch-core h3,
+.dispatch-run h3 {
+  color: var(--text);
+  font-size: 0.64em;
+  line-height: 1.15;
+}
+
+.dispatch-sources > p,
+.dispatch-contract > p,
+.dispatch-core > p,
+.dispatch-run > p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.4em;
+  line-height: 1.35;
+}
+
+.dispatch-source-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.dispatch-source {
+  display: grid;
+  grid-template-columns: 10px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 11px 10px;
+  border: 1px solid #315b7f;
+  border-radius: 8px;
+  background: #14283a;
+}
+
+.dispatch-source.poll { border-color: #6b5138; background: #2a2119; }
+.dispatch-source.gitlab { border-color: #51436c; background: #181522; }
+
+.dispatch-source::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+.dispatch-source.poll::before { background: var(--orange); }
+.dispatch-source.gitlab::before { background: var(--purple); }
+
+.dispatch-source strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.43em;
+  line-height: 1.2;
+}
+
+.dispatch-source small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.35em;
+  line-height: 1.25;
+}
+
+.dispatch-contract .mental-label { color: var(--orange); }
+
+.event-shape {
+  display: grid;
+  gap: 7px;
+  margin-top: 24px;
+  padding: 14px 13px;
+  border: 1px solid #6b5138;
+  border-radius: 9px;
+  background: #2a2119;
+  color: #ffd0a2;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.4em;
+  line-height: 1.25;
+}
+
+.event-shape span { color: var(--muted); }
+
+.dispatch-core .mental-label { color: var(--green); }
+
+.dispatch-steps {
+  display: grid;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.dispatch-step {
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  gap: 9px;
+  align-items: center;
+  padding: 10px 9px;
+  border-left: 3px solid var(--green);
+  background: #17271d;
+}
+
+.dispatch-step:nth-child(2) { border-left-color: var(--blue); background: #14283a; }
+.dispatch-step:nth-child(3) { border-left-color: var(--orange); background: #2a2119; }
+
+.dispatch-step b {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.34em;
+}
+
+.dispatch-step:nth-child(2) b { color: var(--blue); }
+.dispatch-step:nth-child(3) b { color: var(--orange); }
+
+.dispatch-step strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.42em;
+  line-height: 1.2;
+}
+
+.dispatch-step small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.34em;
+  line-height: 1.25;
+}
+
+.dispatch-run .mental-label { color: var(--purple); }
+
+.run-target {
+  display: grid;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.run-target div {
+  padding: 12px 11px;
+  border-left: 3px solid var(--purple);
+  background: #211c2b;
+}
+
+.run-target div:last-child { border-left-color: var(--green); background: #15241b; }
+
+.run-target strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.43em;
+  line-height: 1.2;
+}
+
+.run-target small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.35em;
+  line-height: 1.25;
+}
+
+.dispatch-arrow {
+  display: grid;
+  place-items: center;
+}
+
+.dispatch-arrow::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+
+.dispatch-arrow:nth-of-type(4)::before { background: linear-gradient(90deg, transparent, var(--orange), transparent); }
+.dispatch-arrow:nth-of-type(6)::before { background: linear-gradient(90deg, transparent, var(--purple), transparent); }
+
+.dispatch-note {
+  display: grid;
+  grid-template-columns: 1fr 1.18fr;
+  gap: 18px;
+  padding: 12px 15px;
+  border-left: 3px solid var(--green);
+  background: #102219;
+}
+
+.dispatch-note strong {
+  display: block;
+  color: #b7e3bf;
+  font-size: 0.42em;
+  line-height: 1.3;
+}
+
+.dispatch-note small {
+  display: block;
+  color: var(--dim);
+  font-size: 0.34em;
+  line-height: 1.35;
+}
+
+.runtime-contract-visual {
+  display: grid;
+  grid-template-rows: auto 18px 1fr auto auto;
+  height: 474px;
+  margin-top: 23px;
+}
+
+.runtime-contract {
+  width: 73%;
+  margin: 0 auto;
+  padding: 16px 20px;
+  border: 2px solid var(--blue);
+  border-radius: 15px;
+  background: linear-gradient(180deg, #142639, #111923 84%);
+  text-align: center;
+  box-shadow: 0 18px 55px #0000002e;
+}
+
+.runtime-contract .mental-label { color: var(--blue); }
+
+.runtime-contract h3 {
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 0.72em;
+  line-height: 1.1;
+}
+
+.runtime-contract p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.39em;
+  line-height: 1.25;
+}
+
+.contract-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 11px;
+}
+
+.contract-chips span {
+  padding: 5px 8px;
+  border: 1px solid #3c5b78;
+  border-radius: 6px;
+  color: #b9d9f4;
+  background: #172536;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.35em;
+}
+
+.runtime-adapter-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.runtime-adapter-grid::before {
+  content: "";
+  position: absolute;
+  top: -26px;
+  left: 16%;
+  right: 16%;
+  height: 1px;
+  background: var(--blue);
+}
+
+.runtime-adapter {
+  position: relative;
+  min-height: 220px;
+  padding: 19px 16px 16px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--purple);
+  border-radius: 13px;
+  background: #181522;
+}
+
+.runtime-adapter::before {
+  content: "";
+  position: absolute;
+  top: -27px;
+  left: 50%;
+  width: 1px;
+  height: 26px;
+  background: var(--blue);
+}
+
+.runtime-adapter.pi { border-top-color: var(--orange); background: #211d17; }
+.runtime-adapter.codex { border-top-color: var(--green); background: #15241b; }
+
+.runtime-adapter .runtime-mark {
+  color: var(--purple);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.4em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.runtime-adapter.pi .runtime-mark { color: var(--orange); }
+.runtime-adapter.codex .runtime-mark { color: var(--green); }
+
+.runtime-adapter h3 {
+  margin-top: 10px;
+  color: var(--text);
+  font-size: 0.7em;
+  line-height: 1.1;
+}
+
+.runtime-adapter p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.4em;
+  line-height: 1.35;
+}
+
+.runtime-adapter code {
+  display: block;
+  margin-top: 18px;
+  padding: 9px 10px;
+  border-left: 2px solid currentColor;
+  color: #d8c6f5;
+  background: #211c2b;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.35em;
+  line-height: 1.35;
+}
+
+.runtime-adapter.pi code { color: #ffd0a2; background: #2a2119; }
+.runtime-adapter.codex code { color: #b7e3bf; background: #17271d; }
+
+.runtime-shared {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+  min-height: 48px;
+  padding: 11px 13px;
+  border: 1px solid #36536f;
+  border-radius: 11px;
+  background: #101c2a;
+}
+
+.runtime-shared strong {
+  color: var(--blue);
+  font-size: 0.45em;
+  line-height: 1.2;
+}
+
+.runtime-shared span {
+  padding: 8px 9px;
+  border-left: 2px solid var(--green);
+  color: var(--muted);
+  background: #15241b;
+  font-size: 0.36em;
+  line-height: 1.25;
+}
+
+.runtime-contribution {
+  padding: 11px 15px;
+  border-left: 3px solid var(--orange);
+  background: #211d17;
+  color: #ffd0a2;
+  font-size: 0.42em;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.role-boundary-visual {
+  display: grid;
+  grid-template-columns: 1.18fr 36px 0.86fr 36px 1.18fr;
+  gap: 10px;
+  height: 474px;
+  margin-top: 23px;
+  align-items: stretch;
+}
+
+.role-path,
+.role-gate,
+.role-delivery {
+  min-width: 0;
+  padding: 20px 17px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: #101821d9;
+}
+
+.role-path { border-top: 3px solid var(--blue); }
+.role-gate { border: 2px solid var(--orange); background: #211d17; }
+.role-delivery { border-top: 3px solid var(--green); background: #15241b; }
+
+.role-path .mental-label { color: var(--blue); }
+.role-gate .mental-label { color: var(--orange); }
+.role-delivery .mental-label { color: var(--green); }
+
+.role-path h3,
+.role-gate h3,
+.role-delivery h3 {
+  margin-top: 9px;
+  color: var(--text);
+  font-size: 0.68em;
+  line-height: 1.12;
+}
+
+.role-path > p,
+.role-gate > p,
+.role-delivery > p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.39em;
+  line-height: 1.35;
+}
+
+.role-command {
+  margin-top: 20px;
+  padding: 11px 12px;
+  border-left: 2px solid var(--blue);
+  background: #14283a;
+  color: #b9d9f4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.37em;
+  line-height: 1.35;
+}
+
+.role-files {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.role-file {
+  padding: 7px 9px;
+  border: 1px solid #334253;
+  border-radius: 6px;
+  color: var(--muted);
+  background: #17212c;
+  font-size: 0.35em;
+  line-height: 1.2;
+}
+
+.role-file strong { color: var(--text); }
+
+.role-lanes {
+  display: grid;
+  gap: 7px;
+  margin-top: 15px;
+}
+
+.role-lane {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 9px;
+  border-left: 3px solid var(--purple);
+  background: #181522;
+}
+
+.role-lane:nth-child(2) { border-left-color: var(--orange); background: #2a2119; }
+
+.role-lane strong {
+  color: var(--text);
+  font-size: 0.38em;
+  line-height: 1.2;
+}
+
+.role-lane small {
+  color: var(--muted);
+  font-size: 0.32em;
+  white-space: nowrap;
+}
+
+.role-gate-box {
+  display: grid;
+  gap: 9px;
+  margin-top: 27px;
+}
+
+.role-gate-item {
+  padding: 11px 10px;
+  border-left: 3px solid var(--orange);
+  background: #2a2119;
+}
+
+.role-gate-item:nth-child(2) { border-left-color: var(--red); background: #28191a; }
+.role-gate-item:nth-child(3) { border-left-color: var(--green); background: #15241b; }
+
+.role-gate-item strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.4em;
+  line-height: 1.2;
+}
+
+.role-gate-item small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.34em;
+  line-height: 1.25;
+}
+
+.role-gate-note {
+  position: absolute;
+  left: 17px;
+  right: 17px;
+  bottom: 18px;
+  padding-top: 13px;
+  border-top: 1px solid #6b5138;
+  color: #ffd0a2;
+  font-size: 0.38em;
+  line-height: 1.3;
+}
+
+.role-gate { position: relative; }
+
+.role-delivery-stack {
+  display: grid;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.role-delivery-step {
+  padding: 12px 11px;
+  border-left: 3px solid var(--green);
+  background: #17271d;
+}
+
+.role-delivery-step:nth-child(2) { border-left-color: var(--purple); background: #211c2b; }
+.role-delivery-step:nth-child(3) { border-left-color: var(--blue); background: #14283a; }
+
+.role-delivery-step strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.42em;
+  line-height: 1.2;
+}
+
+.role-delivery-step small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.34em;
+  line-height: 1.25;
+}
+
+.role-delivery-note {
+  margin-top: 15px;
+  color: #b7e3bf;
+  font-size: 0.38em;
+  line-height: 1.35;
+}
+
+.role-arrow {
+  display: grid;
+  place-items: center;
+}
+
+.role-arrow::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+
+.role-arrow:last-of-type::before { background: linear-gradient(90deg, transparent, var(--green), transparent); }
+
+.role-takeaway {
+  grid-column: 1 / -1;
+  align-self: end;
+  padding: 11px 15px;
+  border-left: 3px solid var(--green);
+  background: #102219;
+  color: #b7e3bf;
+  font-size: 0.41em;
+  line-height: 1.3;
+  text-align: center;
+}
+
 .trust-slide {
   background:
     radial-gradient(circle at 8% 14%, #20263a 0, transparent 25%),
@@ -2342,6 +2967,182 @@
           <div class="authority-check"><strong>Final merge decision</strong><small>a valid token does not bypass repository policy</small></div>
         </div>
         <div class="authority-takeaway">A successful exchange grants a capability. It does not grant a trusted outcome.</div>
+      </div>
+    </section>
+
+    <section class="extension-slide" id="dispatch-spine">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">04 · Extension points and architecture</div>
+          <h2>Event sources converge on one dispatch pipeline</h2>
+        </div>
+        <p class="lede">New inputs adapt at the edge. Authorization, harness selection, routing, and execution stay on the shared path.</p>
+      </div>
+
+      <div class="dispatch-visual" aria-label="Current Fullsend dispatch paths converge on a shared event pipeline">
+        <div class="dispatch-flow">
+          <div class="dispatch-sources">
+            <div class="mental-label">input drivers</div>
+            <h3>Current entry paths</h3>
+            <p>Low-latency events and scheduled change detection enter through the same boundary.</p>
+            <div class="dispatch-source-list">
+              <div class="dispatch-source">
+                <div><strong>GitHub event</strong><small>webhook payload normalized by the GHA driver</small></div>
+              </div>
+              <div class="dispatch-source poll">
+                <div><strong>Jira poll</strong><small>change detection plus source-native coordination</small></div>
+              </div>
+              <div class="dispatch-source gitlab">
+                <div><strong>GitLab poll</strong><small>current reconciliation path; webhook fast-path remains gated</small></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dispatch-arrow source-arrow" aria-hidden="true"></div>
+
+          <div class="dispatch-contract">
+            <div class="mental-label">current routing contract</div>
+            <h3>NormalizedEvent</h3>
+            <p>Forge-specific input becomes one event shape before routing.</p>
+            <div class="event-shape"><div><span>repo</span> · target repository</div><div><span>entity</span> · work item or change</div><div><span>transition</span> · what changed</div><div><span>actor · state · source</span></div></div>
+          </div>
+
+          <div class="dispatch-arrow contract-arrow" aria-hidden="true"></div>
+
+          <div class="dispatch-core">
+            <div class="mental-label">fullsend dispatch</div>
+            <h3>Shared dispatch core</h3>
+            <p>Central policy and routing keep input adapters small.</p>
+            <div class="dispatch-steps">
+              <div class="dispatch-step"><b>01</b><div><strong>Authorize</strong><small>platform gate runs before harness CEL</small></div></div>
+              <div class="dispatch-step"><b>02</b><div><strong>Enumerate harnesses</strong><small>registered agent sources become candidates</small></div></div>
+              <div class="dispatch-step"><b>03</b><div><strong>Evaluate trigger(event)</strong><small>matching harnesses can fan out</small></div></div>
+            </div>
+          </div>
+
+          <div class="dispatch-arrow run-arrow" aria-hidden="true"></div>
+
+          <div class="dispatch-run">
+            <div class="mental-label">output driver</div>
+            <h3>Start the run</h3>
+            <p>The selected harness keeps the existing `fullsend run` contract.</p>
+            <div class="run-target">
+              <div><strong>gha-matrix</strong><small>dynamic fan-out for event dispatch</small></div>
+              <div><strong>gha-dispatch</strong><small>direct workflow dispatch from polling</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dispatch-note">
+          <strong>Extension seam: add an input driver, then reuse the spine.</strong>
+          <small>*Future direction: ADR 0098 proposes entity-first evaluation with a required normalized entity and nullable event. That major change adds entity-source, handled-state, scheduled-authorization, attribution, and reconciliation contracts; it is intentionally outside this slide.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="extension-slide" id="runtime-contracts">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">04 · Extension points and architecture</div>
+          <h2>A new runtime adapts to small contracts</h2>
+        </div>
+        <p class="lede">The runner owns the boundary. Each runtime translates the shared contract into its native configuration and hook mechanism.</p>
+      </div>
+
+      <div class="runtime-contract-visual" aria-label="Fullsend runtime contract and runtime-specific adapters">
+        <div class="runtime-contract">
+          <div class="mental-label">runner-side contract</div>
+          <h3>runtime.Runtime + BootstrapInput</h3>
+          <p>Per-agent runtime, model, and effort resolve above the shared execution boundary.</p>
+          <div class="contract-chips"><span>Bootstrap</span><span>Run</span><span>TranscriptHandler</span><span>optional capabilities</span><span>security.HookPlan</span></div>
+        </div>
+
+        <div></div>
+
+        <div class="runtime-adapter-grid">
+          <div class="runtime-adapter claude">
+            <div class="runtime-mark">native adapter</div>
+            <h3>Claude Code</h3>
+            <p>Renders the runner’s hook plan into its settings and instruction surfaces.</p>
+            <code>settings.json<br>claude -p --agent</code>
+          </div>
+          <div class="runtime-adapter pi">
+            <div class="runtime-mark">native adapter</div>
+            <h3>pi</h3>
+            <p>Uses its own extension and configuration path while keeping the same sandbox policy.</p>
+            <code>fullsend-hooks.js<br>pi --print --mode json</code>
+          </div>
+          <div class="runtime-adapter codex">
+            <div class="runtime-mark">translating adapter</div>
+            <h3>Codex</h3>
+            <p>Maps the shared security hooks and provider path into Codex’s native configuration.</p>
+            <code>hooks.json<br>codex exec --json</code>
+          </div>
+        </div>
+
+        <div class="runtime-shared">
+          <strong>Shared boundary</strong><span>same sandbox</span><span>same policy and egress</span><span>same security feature matrix</span>
+        </div>
+
+        <div class="runtime-contribution">New runtime contribution: implement the contract, honor optional capabilities, wire the shared HookPlan, update the matrix, and verify deterministic behavior with runtime fixtures.</div>
+      </div>
+    </section>
+
+    <section class="extension-slide" id="role-boundary">
+      <div class="mental-head">
+        <div>
+          <div class="kicker">04 · Extension points and architecture</div>
+          <h2>Custom agents extend behavior below the role boundary</h2>
+        </div>
+        <p class="lede">Agent behavior can grow inside an existing authority envelope. Shared role permissions should grow only under a separate admission bar.</p>
+      </div>
+
+      <div class="role-boundary-visual" aria-label="Custom agent path below the built-in role boundary">
+        <div class="role-path">
+          <div class="mental-label">custom agent path</div>
+          <h3>Generate, register, test</h3>
+          <p>The CLI creates a complete, valid starting point instead of leaving plumbing to memory.</p>
+          <div class="role-command">fullsend agent new lint-docs<br>--role triage</div>
+          <div class="role-files">
+            <div class="role-file"><strong>agents/</strong> prompt and tools</div>
+            <div class="role-file"><strong>harness/</strong> lifecycle and trigger</div>
+            <div class="role-file"><strong>schemas/ · policies/</strong> checked output and sandbox</div>
+          </div>
+          <div class="role-lanes">
+            <div class="role-lane"><strong>triage agent</strong><small>own sandbox</small></div>
+            <div class="role-lane"><strong>lint-docs agent</strong><small>own sandbox</small></div>
+          </div>
+        </div>
+
+        <div class="role-arrow" aria-hidden="true"></div>
+
+        <div class="role-gate">
+          <div class="mental-label">shared authority</div>
+          <h3>Existing served role</h3>
+          <p>The mint binds the role to a shared permission ceiling and named levels.</p>
+          <div class="role-gate-box">
+            <div class="role-gate-item"><strong>read / write levels</strong><small>the level can narrow a role, never widen its App</small></div>
+            <div class="role-gate-item"><strong>closed built-in table</strong><small>an unknown role fails before useful work begins</small></div>
+            <div class="role-gate-item"><strong>least privilege</strong><small>each agent keeps only the scopes its output needs</small></div>
+          </div>
+          <div class="role-gate-note">A new built-in role is a shared trust boundary, not the default custom-agent extension path.</div>
+        </div>
+
+        <div class="role-arrow" aria-hidden="true"></div>
+
+        <div class="role-delivery">
+          <div class="mental-label">controlled delivery</div>
+          <h3>Output first, control-plane later</h3>
+          <p>Agent runs produce inspectable artifacts. The caller owns any broader follow-up action.</p>
+          <div class="role-delivery-stack">
+            <div class="role-delivery-step"><strong>Agent sandbox</strong><small>read, edit, test inside the role’s boundary</small></div>
+            <div class="role-delivery-step"><strong>fullsend-<em>agent</em> artifact</strong><small>structured result leaves the run</small></div>
+            <div class="role-delivery-step"><strong>workflow_run follow-up</strong><small>user-owned workflow handles control-plane actions</small></div>
+          </div>
+          <div class="role-delivery-note">A need specific to one agent belongs on a standalone mint. A broadly useful built-in role must pass the shared admission criteria.</div>
+        </div>
+
+        <div class="role-takeaway">Custom agent behavior grows laterally. Shared authority grows only through an explicit, reviewable role decision.</div>
       </div>
     </section>
 
