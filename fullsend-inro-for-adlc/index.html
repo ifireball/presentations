@@ -143,15 +143,21 @@
   z-index: 1;
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  margin-left: 32px;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  background: var(--bg);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.52em;
-  font-weight: 700;
+  width: 52px;
+  height: 52px;
+  margin-left: 27px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  overflow: hidden;
+  box-shadow: 0 8px 24px #00000044;
+}
+
+.stage-index img {
+  display: block;
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
 }
 
 .stage-text strong {
@@ -228,8 +234,8 @@
 
 .agenda-item > a {
   display: grid;
-  grid-template-columns: 62px 1fr;
-  gap: 17px;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
   align-items: start;
   min-height: 100%;
   padding: 8px 0 17px;
@@ -245,12 +251,27 @@
   outline-offset: 4px;
 }
 
+.agenda-marker {
+  display: grid;
+  justify-items: start;
+  align-content: start;
+  gap: 4px;
+}
+
+.agenda-marker img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 6px 16px #00000033;
+}
+
 .agenda-number {
   color: var(--blue);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.67em;
+  font-size: 0.54em;
   font-weight: 700;
-  padding-top: 4px;
 }
 
 .agenda-item h3 {
@@ -841,10 +862,23 @@
 }
 
 .agent-card {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 10px;
+  align-items: center;
   padding: 16px 14px;
   border: 1px solid #2b3948;
   border-radius: 10px;
   background: #111a24;
+}
+
+.agent-card-icon {
+  display: block;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  object-fit: cover;
+  box-shadow: 0 6px 16px #00000033;
 }
 
 .agent-card strong {
@@ -2051,12 +2085,20 @@
 
 .role-lane {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 32px 1fr auto;
   gap: 8px;
   align-items: center;
   padding: 8px 9px;
   border-left: 3px solid var(--purple);
   background: #181522;
+}
+
+.role-lane-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .role-lane:nth-child(2) { border-left-color: var(--orange); background: #2a2119; }
@@ -2654,10 +2696,23 @@
   position: relative;
   flex: 1;
   min-width: 0;
-  padding: 14px 13px 16px;
+  padding: 14px 13px 72px;
   border: 1px solid var(--border);
   border-top: 3px solid var(--blue);
   background: #111923d9;
+}
+
+.ladder-icon {
+  position: absolute;
+  right: 50%;
+  bottom: 12px;
+  display: block;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 6px 16px #00000033;
+  transform: translateX(50%);
 }
 
 .ladder-step:nth-child(2) { height: 59%; border-top-color: var(--purple); background: #181522; }
@@ -3241,19 +3296,19 @@
       <div class="lifecycle" aria-label="Fullsend software development lifecycle">
         <div class="lifecycle-label">One platform boundary across the lifecycle</div>
         <div class="stage issue">
-          <div class="stage-index">01</div>
+          <div class="stage-index"><img src="assets/agent-icons/triage.png" alt="Triage agent"></div>
           <div class="stage-text"><strong>Triage issues</strong><small>Turn repository context into a useful starting point</small></div>
         </div>
         <div class="stage build">
-          <div class="stage-index">02</div>
+          <div class="stage-index"><img src="assets/agent-icons/coder.png" alt="Coder agent"></div>
           <div class="stage-text"><strong>Implement changes</strong><small>Run focused work inside explicit boundaries</small></div>
         </div>
         <div class="stage review">
-          <div class="stage-index">03</div>
+          <div class="stage-index"><img src="assets/agent-icons/review.png" alt="Review agent"></div>
           <div class="stage-text"><strong>Review code</strong><small>Produce evidence people can inspect and trust</small></div>
         </div>
         <div class="stage merge">
-          <div class="stage-index">04</div>
+          <div class="stage-index"><img src="assets/agent-icons/upstream.png" alt="Upstream agent"></div>
           <div class="stage-text"><strong>Merge to production</strong><small>Advance software through controlled forge actions</small></div>
         </div>
         <div class="boundary-note"><strong>execution · orchestration · security · evidence</strong><br>the boundaries that make autonomy usable</div>
@@ -3272,31 +3327,31 @@
       <div class="agenda-list">
         <div class="agenda-item" data-section="01" data-column="left">
           <a href="#/mental-map">
-            <div class="agenda-number">01</div>
+            <div class="agenda-marker"><img src="assets/agent-icons/discovery.png" alt=""><div class="agenda-number">01</div></div>
             <div><h3>The Fullsend mental model</h3><p>Where the platform sits between Git-hosted organizations and the autonomous development lifecycle.</p></div>
           </a>
         </div>
         <div class="agenda-item" data-section="02" data-column="left">
           <a href="#/harness-definition">
-            <div class="agenda-number">02</div>
+            <div class="agenda-marker"><img src="assets/agent-icons/coder.png" alt=""><div class="agenda-number">02</div></div>
             <div><h3>How an agent is composed</h3><p>Harnesses, runtimes, skills, and lifecycle hooks as the building blocks of agent behavior.</p></div>
           </a>
         </div>
         <div class="agenda-item" data-section="03" data-column="left">
           <a href="#/trust-model">
-            <div class="agenda-number">03</div>
+            <div class="agenda-marker"><img src="assets/agent-icons/review.png" alt=""><div class="agenda-number">03</div></div>
             <div><h3>Trust boundaries in execution</h3><p>Context, credentials, sandboxing, forge interactions, and the evidence behind each action.</p></div>
           </a>
         </div>
         <div class="agenda-item" data-section="04" data-column="right">
           <a href="#/dispatch-spine">
-            <div class="agenda-number">04</div>
+            <div class="agenda-marker"><img src="assets/agent-icons/upstream.png" alt=""><div class="agenda-number">04</div></div>
             <div><h3>Extension points and architecture</h3><p>Where custom agents fit, which principles shape the platform, and how it stays extensible.</p></div>
           </a>
         </div>
         <div class="agenda-item" data-section="05" data-column="right">
           <a href="#/contributor-ladder">
-            <div class="agenda-number">05</div>
+            <div class="agenda-marker"><img src="assets/agent-icons/scribe.png" alt=""><div class="agenda-number">05</div></div>
             <div><h3>Building and contributing safely</h3><p>Testing new capabilities, evaluating trustworthiness, and evolving Fullsend without losing control.</p></div>
           </a>
         </div>
@@ -3408,8 +3463,8 @@
       <div class="coordination-layout">
         <div class="agent-rail">
           <div class="agent-rail-label">independent agents</div>
-          <div class="agent-card triage"><strong>Triage</strong><small>labels and routes the issue</small></div>
-          <div class="agent-card code"><strong>Code</strong><small>creates and updates the PR</small></div>
+          <div class="agent-card triage"><img class="agent-card-icon" src="assets/agent-icons/triage.png" alt=""><div><strong>Triage</strong><small>labels and routes the issue</small></div></div>
+          <div class="agent-card code"><img class="agent-card-icon" src="assets/agent-icons/coder.png" alt=""><div><strong>Code</strong><small>creates and updates the PR</small></div></div>
         </div>
 
         <div class="repo-board" aria-label="Repository as coordinator">
@@ -3429,8 +3484,8 @@
 
         <div class="agent-rail">
           <div class="agent-rail-label">independent signals</div>
-          <div class="agent-card review"><strong>Review agents</strong><small>evaluate the PR without trusting prior reviews</small></div>
-          <div class="agent-card ci"><strong>CI and humans</strong><small>contribute checks and approval where paths require it</small></div>
+          <div class="agent-card review"><img class="agent-card-icon" src="assets/agent-icons/review.png" alt=""><div><strong>Review agents</strong><small>evaluate the PR without trusting prior reviews</small></div></div>
+          <div class="agent-card ci"><img class="agent-card-icon" src="assets/agent-icons/upstream.png" alt=""><div><strong>CI and humans</strong><small>contribute checks and approval where paths require it</small></div></div>
         </div>
       </div>
     </section>
@@ -3890,8 +3945,8 @@
             <div class="role-file"><strong>schemas/ · policies/</strong> checked output and sandbox</div>
           </div>
           <div class="role-lanes">
-            <div class="role-lane"><strong>triage agent</strong><small>own sandbox</small></div>
-            <div class="role-lane"><strong>lint-docs agent</strong><small>own sandbox</small></div>
+            <div class="role-lane"><img class="role-lane-icon" src="assets/agent-icons/triage.png" alt=""><strong>triage agent</strong><small>own sandbox</small></div>
+            <div class="role-lane"><img class="role-lane-icon" src="assets/agent-icons/scribe.png" alt=""><strong>lint-docs agent</strong><small>own sandbox</small></div>
           </div>
         </div>
 
@@ -3939,21 +3994,25 @@
       <div class="ladder-visual" aria-label="Contributor ladder from vouched to maintainer">
         <div class="ladder-steps">
           <div class="ladder-step" data-level="01">
+            <img class="ladder-icon" src="assets/agent-icons/discovery.png" alt="">
             <h3>Vouched</h3>
             <p>Submit code, docs, and tests from your own fork.</p>
             <div class="ladder-unlock">PRs pass the vouch gate</div>
           </div>
           <div class="ladder-step" data-level="02">
+            <img class="ladder-icon" src="assets/agent-icons/triage.png" alt="">
             <h3>Triage</h3>
             <p>Shape issue state and trigger observation agents.</p>
             <div class="ladder-unlock">labels · e2e CI</div>
           </div>
           <div class="ladder-step" data-level="03">
+            <img class="ladder-icon" src="assets/agent-icons/coder.png" alt="">
             <h3>Write</h3>
             <p>Change non-protected branches and run mutation agents.</p>
             <div class="ladder-unlock">/fs-code · /fs-fix</div>
           </div>
           <div class="ladder-step" data-level="04">
+            <img class="ladder-icon" src="assets/agent-icons/upstream.png" alt="">
             <h3>Maintainer</h3>
             <p>Approve, authorize CI, and merge under CODEOWNERS.</p>
             <div class="ladder-unlock">merge · approval · policy</div>
