@@ -212,6 +212,8 @@
 .agenda-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
   gap: 0 56px;
   margin-top: 31px;
   padding-left: 18px;
@@ -270,6 +272,116 @@
 .agenda-item:nth-child(3) .agenda-number { color: var(--orange); }
 .agenda-item:nth-child(4) .agenda-number { color: var(--green); }
 .agenda-item:nth-child(5) .agenda-number { color: var(--red); }
+
+.agenda-detail-panel {
+  --detail-accent: var(--blue);
+  position: absolute;
+  top: 192px;
+  bottom: 92px;
+  z-index: 6;
+  padding: 24px 26px 22px;
+  overflow: hidden;
+  border: 1px solid var(--detail-accent);
+  border-radius: 14px;
+  background: rgba(7, 12, 18, 0.28);
+  box-shadow: 0 22px 70px #00000066;
+  backdrop-filter: blur(9px) brightness(0.48) saturate(0.85);
+  -webkit-backdrop-filter: blur(9px) brightness(0.48) saturate(0.85);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.agenda-detail-panel.is-left {
+  left: calc(50% + 28px);
+  right: 58px;
+}
+
+.agenda-detail-panel.is-right {
+  left: 58px;
+  right: calc(50% + 28px);
+}
+
+.agenda-detail-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.agenda-detail-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--detail-accent) 14%, transparent), transparent 44%);
+}
+
+.agenda-detail-kicker,
+.agenda-detail-label {
+  position: relative;
+  color: var(--detail-accent);
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.agenda-detail-title {
+  position: relative;
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 0.79em;
+  line-height: 1.16;
+}
+
+.agenda-detail-label {
+  margin-top: 22px;
+  color: var(--muted);
+}
+
+.agenda-slide-list {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.agenda-slide-list li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 8px;
+  align-items: start;
+}
+
+.agenda-slide-list .slide-index {
+  padding-top: 1px;
+  color: var(--detail-accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.42em;
+  font-weight: 700;
+}
+
+.agenda-slide-list a {
+  color: var(--text);
+  font-size: 0.46em;
+  line-height: 1.22;
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
+}
+
+.agenda-slide-list a:hover,
+.agenda-slide-list a:focus-visible {
+  color: var(--detail-accent);
+  border-bottom-color: currentColor;
+}
+
+.agenda-slide-list a:focus-visible {
+  outline: 2px solid var(--detail-accent);
+  outline-offset: 3px;
+}
 
 .reveal .deck-home-controls {
   position: absolute;
@@ -3075,6 +3187,8 @@
   .stage { min-height: 47px; grid-template-columns: 78px 1fr; }
   .stage-index { margin-left: 18px; width: 34px; height: 34px; }
   .agenda-list { gap: 0 26px; padding-left: 0; }
+  .agenda-detail-panel.is-left,
+  .agenda-detail-panel.is-right { left: 34px; right: 34px; top: 205px; bottom: 70px; }
   .mental-head { display: block; }
   .mental-head .lede { margin-top: 12px; text-align: left; }
   .mental-visual { height: 450px; }
@@ -3155,36 +3269,43 @@
       </div>
 
       <div class="agenda-list">
-        <div class="agenda-item">
+        <div class="agenda-item" data-section="01" data-column="left">
           <a href="#/mental-map">
             <div class="agenda-number">01</div>
             <div><h3>The Fullsend mental model</h3><p>Where the platform sits between Git-hosted organizations and the autonomous development lifecycle.</p></div>
           </a>
         </div>
-        <div class="agenda-item">
+        <div class="agenda-item" data-section="02" data-column="left">
           <a href="#/harness-definition">
             <div class="agenda-number">02</div>
             <div><h3>How an agent is composed</h3><p>Harnesses, runtimes, skills, and lifecycle hooks as the building blocks of agent behavior.</p></div>
           </a>
         </div>
-        <div class="agenda-item">
+        <div class="agenda-item" data-section="03" data-column="left">
           <a href="#/trust-model">
             <div class="agenda-number">03</div>
             <div><h3>Trust boundaries in execution</h3><p>Context, credentials, sandboxing, forge interactions, and the evidence behind each action.</p></div>
           </a>
         </div>
-        <div class="agenda-item">
+        <div class="agenda-item" data-section="04" data-column="right">
           <a href="#/dispatch-spine">
             <div class="agenda-number">04</div>
             <div><h3>Extension points and architecture</h3><p>Where custom agents fit, which principles shape the platform, and how it stays extensible.</p></div>
           </a>
         </div>
-        <div class="agenda-item">
+        <div class="agenda-item" data-section="05" data-column="right">
           <a href="#/contributor-ladder">
             <div class="agenda-number">05</div>
             <div><h3>Building and contributing safely</h3><p>Testing new capabilities, evaluating trustworthiness, and evolving Fullsend without losing control.</p></div>
           </a>
         </div>
+      </div>
+
+      <div class="agenda-detail-panel" id="agenda-detail-panel" role="region" aria-live="polite" aria-label="Slides in this section" hidden>
+        <div class="agenda-detail-kicker"></div>
+        <h3 class="agenda-detail-title"></h3>
+        <div class="agenda-detail-label">Slides in this section</div>
+        <ol class="agenda-slide-list"></ol>
       </div>
 
       <div class="takeaway"><strong>By the end:</strong> you should know where your agent belongs, how to build it, and how to contribute it back responsibly.</div>
@@ -4146,6 +4267,84 @@ function updateHome() {
 }
 Reveal.on('ready', updateHome);
 Reveal.on('slidechanged', updateHome);
+
+const agendaSlide = document.querySelector('.agenda-slide');
+const agendaDetail = document.querySelector('#agenda-detail-panel');
+const agendaDetailKicker = agendaDetail.querySelector('.agenda-detail-kicker');
+const agendaDetailTitle = agendaDetail.querySelector('.agenda-detail-title');
+const agendaSlideList = agendaDetail.querySelector('.agenda-slide-list');
+let activeAgendaItem = null;
+let agendaDetailHideTimer = null;
+
+function sectionSlidesFor(prefix) {
+  return [...document.querySelectorAll('.reveal .slides > section')].filter((section) => {
+    const kicker = section.querySelector('.kicker')?.textContent.trim();
+    return kicker?.startsWith(`${prefix} ·`);
+  });
+}
+
+function showAgendaDetail(item) {
+  window.clearTimeout(agendaDetailHideTimer);
+  const sectionSlides = sectionSlidesFor(item.dataset.section);
+  const number = item.querySelector('.agenda-number');
+  const title = item.querySelector('h3');
+  const side = item.dataset.column === 'right' ? 'is-right' : 'is-left';
+
+  activeAgendaItem = item;
+  agendaDetail.className = `agenda-detail-panel ${side}`;
+  agendaDetail.style.setProperty('--detail-accent', getComputedStyle(number).color);
+  agendaDetailKicker.textContent = `${number.textContent.trim()} · Section route`;
+  agendaDetailTitle.textContent = title.textContent.trim();
+  agendaSlideList.replaceChildren(...sectionSlides.map((section, index) => {
+    const slideTitle = section.querySelector('h2, h1')?.textContent.trim() || section.id;
+    const listItem = document.createElement('li');
+    const indexLabel = document.createElement('span');
+    const link = document.createElement('a');
+    indexLabel.className = 'slide-index';
+    indexLabel.textContent = String(index + 1).padStart(2, '0');
+    link.href = `#/${section.id}`;
+    link.textContent = slideTitle;
+    listItem.append(indexLabel, link);
+    return listItem;
+  }));
+
+  agendaDetail.hidden = false;
+  window.requestAnimationFrame(() => {
+    agendaDetail.getBoundingClientRect();
+    agendaDetail.classList.add('is-open');
+  });
+}
+
+function hideAgendaDetail() {
+  window.clearTimeout(agendaDetailHideTimer);
+  agendaDetail.classList.remove('is-open');
+  agendaDetailHideTimer = window.setTimeout(() => {
+    if (!agendaDetail.classList.contains('is-open')) agendaDetail.hidden = true;
+  }, 180);
+  activeAgendaItem = null;
+}
+
+function scheduleAgendaDetailHide() {
+  window.clearTimeout(agendaDetailHideTimer);
+  agendaDetailHideTimer = window.setTimeout(() => {
+    const focusInsideAgenda = agendaSlide.contains(document.activeElement);
+    if (!agendaDetail.matches(':hover') && !activeAgendaItem?.matches(':hover') && !focusInsideAgenda) {
+      hideAgendaDetail();
+    }
+  }, 220);
+}
+
+agendaSlide.querySelectorAll('.agenda-item').forEach((item) => {
+  item.addEventListener('mouseenter', () => showAgendaDetail(item));
+  item.addEventListener('mouseleave', scheduleAgendaDetailHide);
+  item.addEventListener('focusin', () => showAgendaDetail(item));
+  item.addEventListener('focusout', scheduleAgendaDetailHide);
+});
+
+agendaDetail.addEventListener('mouseenter', () => window.clearTimeout(agendaDetailHideTimer));
+agendaDetail.addEventListener('mouseleave', scheduleAgendaDetailHide);
+agendaDetail.addEventListener('focusin', () => window.clearTimeout(agendaDetailHideTimer));
+agendaDetail.addEventListener('focusout', scheduleAgendaDetailHide);
 </script>
 </body>
 </html>
