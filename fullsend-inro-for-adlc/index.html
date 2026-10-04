@@ -219,11 +219,28 @@
 
 .agenda-item {
   display: grid;
+  min-height: 121px;
+  padding: 0;
+  border-bottom: 1px solid #202a35;
+}
+
+.agenda-item > a {
+  display: grid;
   grid-template-columns: 62px 1fr;
   gap: 17px;
-  min-height: 121px;
+  align-items: start;
+  min-height: 100%;
   padding: 8px 0 17px;
-  border-bottom: 1px solid #202a35;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+.agenda-item > a:hover { color: inherit; }
+.agenda-item > a:hover h3 { color: var(--blue); }
+.agenda-item > a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
 }
 
 .agenda-number {
@@ -253,6 +270,93 @@
 .agenda-item:nth-child(3) .agenda-number { color: var(--orange); }
 .agenda-item:nth-child(4) .agenda-number { color: var(--green); }
 .agenda-item:nth-child(5) .agenda-number { color: var(--red); }
+
+.reveal .deck-home-controls {
+  position: absolute;
+  top: auto;
+  bottom: var(--r-controls-spacing, 18px);
+  left: var(--r-controls-spacing, 18px);
+  right: auto;
+  z-index: 11;
+  color: var(--blue);
+  pointer-events: none;
+  font-size: 10px;
+}
+
+.reveal .deck-home-controls .navigate-home {
+  position: absolute;
+  left: 0;
+  bottom: 1.4em;
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  color: currentColor;
+  text-decoration: none;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: inherit;
+  transform: scale(0.9999);
+  visibility: hidden;
+  opacity: 0;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.reveal .deck-home-controls .navigate-home.enabled {
+  visibility: visible;
+  opacity: 0.9;
+  transform: none;
+}
+
+.reveal .deck-home-controls .navigate-home.enabled:hover { opacity: 1; }
+
+.reveal .deck-home-controls .controls-arrow {
+  position: relative;
+  width: 3.6em;
+  height: 3.6em;
+  transform: rotate(90deg);
+}
+
+.reveal .deck-home-controls .controls-arrow:before,
+.reveal .deck-home-controls .controls-arrow:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.6em;
+  height: 0.5em;
+  border-radius: 0.25em;
+  background-color: currentColor;
+  transition: all 0.15s ease, background-color 0.8s ease;
+  transform-origin: 0.2em 50%;
+  will-change: transform;
+}
+
+.reveal .deck-home-controls .controls-arrow:before {
+  transform: translateX(0.5em) translateY(1.55em) rotate(45deg);
+}
+
+.reveal .deck-home-controls .controls-arrow:after {
+  transform: translateX(0.5em) translateY(1.55em) rotate(-45deg);
+}
+
+.reveal .deck-home-controls .controls-home-body {
+  position: absolute;
+  bottom: 0.15em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5em;
+  height: 1.25em;
+  border-radius: 0.25em;
+  background-color: transparent;
+  border: 0.5em solid currentColor;
+  box-sizing: border-box;
+  transition: border-color 0.8s ease;
+  pointer-events: none;
+}
 
 .takeaway {
   position: absolute;
@@ -3052,24 +3156,34 @@
 
       <div class="agenda-list">
         <div class="agenda-item">
-          <div class="agenda-number">01</div>
-          <div><h3>The Fullsend mental model</h3><p>Where the platform sits between Git-hosted organizations and the autonomous development lifecycle.</p></div>
+          <a href="#/mental-map">
+            <div class="agenda-number">01</div>
+            <div><h3>The Fullsend mental model</h3><p>Where the platform sits between Git-hosted organizations and the autonomous development lifecycle.</p></div>
+          </a>
         </div>
         <div class="agenda-item">
-          <div class="agenda-number">02</div>
-          <div><h3>How an agent is composed</h3><p>Harnesses, runtimes, skills, and lifecycle hooks as the building blocks of agent behavior.</p></div>
+          <a href="#/harness-definition">
+            <div class="agenda-number">02</div>
+            <div><h3>How an agent is composed</h3><p>Harnesses, runtimes, skills, and lifecycle hooks as the building blocks of agent behavior.</p></div>
+          </a>
         </div>
         <div class="agenda-item">
-          <div class="agenda-number">03</div>
-          <div><h3>Trust boundaries in execution</h3><p>Context, credentials, sandboxing, forge interactions, and the evidence behind each action.</p></div>
+          <a href="#/trust-model">
+            <div class="agenda-number">03</div>
+            <div><h3>Trust boundaries in execution</h3><p>Context, credentials, sandboxing, forge interactions, and the evidence behind each action.</p></div>
+          </a>
         </div>
         <div class="agenda-item">
-          <div class="agenda-number">04</div>
-          <div><h3>Extension points and architecture</h3><p>Where custom agents fit, which principles shape the platform, and how it stays extensible.</p></div>
+          <a href="#/dispatch-spine">
+            <div class="agenda-number">04</div>
+            <div><h3>Extension points and architecture</h3><p>Where custom agents fit, which principles shape the platform, and how it stays extensible.</p></div>
+          </a>
         </div>
         <div class="agenda-item">
-          <div class="agenda-number">05</div>
-          <div><h3>Building and contributing safely</h3><p>Testing new capabilities, evaluating trustworthiness, and evolving Fullsend without losing control.</p></div>
+          <a href="#/contributor-ladder">
+            <div class="agenda-number">05</div>
+            <div><h3>Building and contributing safely</h3><p>Testing new capabilities, evaluating trustworthiness, and evolving Fullsend without losing control.</p></div>
+          </a>
         </div>
       </div>
 
@@ -4004,6 +4118,13 @@
     </section>
 
   </div>
+
+  <aside class="deck-home-controls">
+    <a href="#/agenda" class="navigate-home" aria-label="Back to agenda" title="Back to agenda">
+      <div class="controls-arrow" aria-hidden="true"></div>
+      <span class="controls-home-body" aria-hidden="true"></span>
+    </a>
+  </aside>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
@@ -4016,6 +4137,15 @@ Reveal.initialize({
   height: 700,
   margin: 0.1,
 });
+
+const home = document.querySelector('.deck-home-controls .navigate-home');
+function updateHome() {
+  const onAgenda = Reveal.getCurrentSlide()?.id === 'agenda';
+  home.classList.toggle('enabled', !onAgenda);
+  home.setAttribute('aria-disabled', onAgenda ? 'true' : 'false');
+}
+Reveal.on('ready', updateHome);
+Reveal.on('slidechanged', updateHome);
 </script>
 </body>
 </html>

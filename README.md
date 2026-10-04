@@ -30,7 +30,18 @@ Open [http://127.0.0.1:4173/](http://127.0.0.1:4173/). The dev server regenerate
 ## Adding a presentation
 
 1. Create a new subdirectory with at least one `.html` file.
-2. Run `npm run index` (or `npm run dev`) to update the landing page.
+2. If the deck has an agenda slide, make that the navigation hub: give it the `agenda` ID, link each agenda item to the first slide in its section with a Reveal hash link such as `#/section-start`, and add a persistent bottom-left home icon on content slides that returns to `#/agenda`. Hide the icon while the agenda is active. See [`fullsend-inro-for-adlc/index.html`](fullsend-inro-for-adlc/index.html) for the preferred implementation and styling pattern.
+3. Run `npm run index` (or `npm run dev`) to update the landing page.
+
+### Preferred slide navigation
+
+For consistency across decks, an agenda-driven presentation should provide two-way navigation:
+
+- Agenda rows are links to the first slide of their corresponding section, using stable section IDs.
+- Every non-agenda slide exposes a bottom-left home icon that returns to `#/agenda`.
+- The home icon is hidden on the agenda slide itself, with an accessible label such as “Back to agenda”.
+
+Keep the navigation self-contained in the deck’s HTML/CSS/Reveal.js setup so it works in local previews and the published static site. Add the navigation when the agenda is introduced, rather than retrofitting it after the rest of the deck is built.
 
 ## Deployment
 
